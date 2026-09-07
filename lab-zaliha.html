@@ -1,0 +1,2095 @@
+<title>LabMaster</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<meta name="theme-color" content="#1F7A6C">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="LabMaster">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAGBklEQVR4nO3ca0zVdRzH8XO4i+AFhuY981qGpmVqmoqZt+GYKCg5srnZ1hCd+iBjNdPmcmq6ElePakq6PIpi87Kpucp0GhVpZjkvlYgNTDFIEORwepaz/Oj/dzg/zqG9X4/5nv937L3/A/iCu0fefBdwL2HBXgChizggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQekiCA+e97IsYvGTXL4xdV1t4atftPmOi6XyzVj8NAVqdNtP8VUaeW1iflrmv+5vDkgEQck4oBEHJCIAxJxQCIOSMQBiThagIrqqqA8lzhCXWXNzaW7PUF5dDB/fB6CdpQU7ygptvTha9OzpgwYZDTibWxcXLi17EalpZXujzdHM5k3cqxpGS6Xa9WBPSd+vWBjHyeIozmM7t1vYcpE06nCkuItxcds7OMQcVjXMzFpTXpWmNttNFVy+bcV+4vsbOQUcdgVFx2dP/PF+OgYo6ny6qqF2z++7fVa2soh4rAozO1eMy2rZ2KS0VRdQ0OuZ/Mff1Vb2so54rBoYcrEMX36m04t27vz9JXLNvYxRRy2TB4wcN7IsaZTHx0/8ump7yys4w/isKL/Q51XTs0wnTp68dy6Q/tt7OMf4gi8hNjW+ZnZMZGRRlOXrl9bUrjV62u0tJUfiCPAIsLC18+Y3blte6Opm/V1OZ5NVbdqLW3lH+IIsLxJU4f2eMRoxOfyvVq07cLVCksr+Y04AiljyNOznhxuOpX/+aHDZ8/Y2KeJiCNghnTr8fqkNNOpAz+d/uDIYRv7NB1xBEbHNm3fzciODA83mjpb/vtruz0+l8/SVk1EHAEQHRGxITM7sXWc0dSN2ppcT0Ht7XpLWzUdcQTAW6nTH+/U1WjE29i4aMeWyzeuW1opIIijqeaOGJ2aPNh0KriHGg4RR5OM6tV30XNO/xb8H7u+/ya4hxoOEYf/uickvpOeFe42+x6eLLu0fF+RnY0CjDj81DoqemPmnPiYVkZTFdVVCzwF9d4GS1sFFnH4w+1yr542s1dSB6Opem9DrqfgaggcajhEHP5YkPJ8St/HTKeW7dn5w5VSG/tYQhzGJjya/PKoFNOpTSe+2h0yhxoOEYeZfh07vZ2W4XaZXQsfu3hu7cF9llayhzgMtGsVuyEzu1VklNFUaeW1xSF2qOEQcTgVHha2fsbsru0SjKZu1tflbNscaocaDhGHU0snpA57uJfRiM/lW1rkOX+13NJKthGHI+lPPDV76DOmUxu/OPTZ2R9t7NM8iOPBBnXpvmzKNNOpgz+ffv/LED3UcIg4HqBDfJv3Mo0PNc5VlIfyoYZDxHE/UeERGzKzk+Jijab+rK2Z79lUUx+6hxoOEcf9LE9NT+7czWjE62tcVLi1tDKkDzUcIg7ppeHPpg0cYjq1+sDe47+ct7FP8yOOexvRs/eS8ZNNp3ad/Lbg66M29gkK4riHbu0T1k1/wfRQ41RZ6fK9uyytFBTE8W+xUVH5mXPatoo1mqqorsr1bG4phxoOEcdd3C73qrSZfTp0NJqq9zYs2N6SDjUcajH/TTA+OubMG6sC+5nJK/O8jXf9PixnzPjx/QeYfk5UeMQnc3MCt9c9nCornfXhRquP+C/eHHcM7NLtldHjgr1FCCGOO5Li2pgeavy/EQck4oBEHJCIAxJxQCIOSMQBiTgguXvkzQ/2DghRvDkgEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oBEHJCIAxJxQCIOSMQBiTggEQck4oB0NxsEQ6jae68mAAAAAElFTkSuQmCC">
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiTGFiWmFsaWhhIiwic2hvcnRfbmFtZSI6IkxhYlphbGloYSIsImRpc3BsYXkiOiJzdGFuZGFsb25lIiwiYmFja2dyb3VuZF9jb2xvciI6IiMxMDE2MTMiLCJ0aGVtZV9jb2xvciI6IiMxRjdBNkMiLCJpY29ucyI6W3sic3JjIjoiZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFNQUFBQURBQ0FJQUFBRGR2dnRRQUFBR2EwbEVRVlI0bk8zZFcweldkUnpIOGVmaEtPQUo4bnpJUERMTW5KbHAwWkpTNTZFOEpDbzBOZG5LS3pDbkxSZTUxRTB1ekZ5eFZPektDeFV6UVJNTHA4TzBjSk9tbHRSZ0UyY2VrZ1pLaXVJSmtNUFRoVGV0QytQLy8veCt6Lzl4ZTc4dW5kODluN24zbmh2NFRmK2cxY3Q4Z0Z0aFhnL0FrNDJBSUNFZ1NBZ0lFZ0tDaElBZ0lTQklDQWdTQW9LRWdDQWhJRWdJQ0JJQ2dvU0FJQ0VnU0FnSUVnS0NoSUFnSVNCSUNBZ1NBb0tFZ0NBaElFZ0lDQklDZ29TQUlDRWdTQWdJRWdLQ2hJQWdJU0JJQ0FnU0FvS0VnQ0FoSUVnSUNCSUNnb1NBSUNFZ1NBZ0lFZ0tDaElBZ0lTQklDQWdTQW9LRWdDQWhJRWdJQ0JJQ2dvU0FJQ0VnU0FnSUVnS0NoSUFnSVNCSUNBZ1NBb0tFZ0NBaElFZ0lDQklDZ29TQUlDRWdTQ0s4SHVEeitYeGxINjd0SGhQYjhiOWY5UHV2cTc4cnRMZm4zN3AwaWptMWFsMXdQc3VkbW9aYlV6WnY5T3JUK1FhQ2hJQWdJU0JJQ0FnU0FvS0VnQ0FoSUVnSUNCSUNnb1NBbm5qRmxiOTUrT2tFOUdUNzZjSzV6VCtXZURnZ0pINFdGc3J1TmpXT3pNbTIraEg5dXNVWExGMldFQnZuOVBEaTMzV3J2djJtUFJDd3NhcUQrQWJ5V0V4a1ZGNzZFaGYxTkRRK3lOeTc0LzdEWmh1ck9vNkF2T1QzK1RmTVNVdnMzZGZwWVZ0Nys0cDl1NnR2M2JTeHloRUM4bEpteXVTcFNhTmNISDVhVW56cXlrWGplMXdnSU05TVRScVZPWEd5aThQQ3M2ZDNueWt6dnNjZEF2SkdZdSsrRythaytYMStwNGUvWEwyY2MvaWdqVW51RUpBSEVtTGo4dEtYeEVSR09UMnNhYmkxb2pDL3RiM054aXAzQ0NqWUlzTEN2MXl3dUYrM2VLZUhqUzBQcy9idXJIOXczOFlxMXdnbzJOYk1tUFBDMDRPZFhnVjhnZXlpZ3ZQWGEyMU1VaEJRVUMxNk1YbkIyUEV1RHJlVkhqdGFWV2w4ajQ2QWd1ZWx3Y095cDg1MGNWaHlybUxiaVdQRzl4aEJRRUV5TVA2cDNIa0x3OE1jLzROWFhhdkpQbGdROEhuNTg0ckhJS0JnaUl1SzNwYWUwYzNKMjdkSDZ1L2Z5eXJZMmRUU1ltT1ZFUVJrWFpqZnZ5bjE3YUU5ZXprOWJHbHJXMTZZWDl0dzI4SW9Zd2pJdWhXVHByODJQTW5GWWM3aG9yUFZWMHpQTVl5QTdKbzVhc3pTNUJRWGgvbW5UKzRyUDJOOGozRUVaTkdvZmdOeVpzMTNjZmp6NVQ4Mmxod3l2c2NHQXJLbForY3VXOU9XUkVjNC9wVzlxL1UzVis3YjNSWm90N0hLT0FLeUlpbzhZa3Zha2w1ZHVqbzl2TmZjbkxsM3g1Mm1SaHVyYkNBZ0s5YlBUQjNkZjZEVHEvWkFZTldCUFpkdTFObVlaQWtCbWZkZWNzcnMwV05kSE9ZZVAxSjZvY3I0SHFzSXlMQlhoeVd1bkRUZHhXRnhSZm4yc2xMamUyd2pJSk9HOU9qNWVlckNNTC9qWHhPcnJQbHJUZkYrRzVOc0l5Qmp1bmFLeVV2UDZCd2Q3ZlN3N3U2ZFpRVTdtMXRiYmF5eWpZRE1DUGVIZlRGdjRhQ0VIazRQbTF0YjN5L1lWWGYzam8xVlFVQkFabncwOWMza0ljTmRISzR0M2w5UlUyMThUOUFRa0FHcFk4WXRIditLaThQdFphWGZWNVFiM3hOTUJLUjZmc0NnZFcvTWRYRlllcUVxOS9nUjQzdUNqSUFrZmJwMjI1TDJUbVI0dU5QRFN6ZnFWaDNZNCsyemRpTUl5TDFPa1pGNTZSa0pjWjJkSHQ1cGFzemN1K05lczhmUDJvMGdJUGMyekU1TDZ0UFA2VlZib1AyRC9WOWZyZmYrV2JzUkJPUlM1c1RKMDBZKzUrSndZOG1oc2tzWGpPL3hDZ0c1TVRueDJheVVLUzRPOTVlZnlUOTkwdmdlRHhHUVl5TjY5ZG40VnJxTForMW5xLzljZjdqSXdpSXZFWkF6OGJGeGVla1pzVkdPbjdYWE50eGVYcmlycFMyRW5yVWJRVUFPUEhyVzNyKzc0MmZ0VFMwdFdRVTc2Ky9mczdIS1d3VGt3Q2N6Wm85ejk2ejlZRUhWdFJvYmt6eEhRQjIxY056TGFXTW51RGo4NnNUeGtuTVZ4dmVFQ0FMcWtBblBEUDE0Mml3WGgwZXJLdk5LZnpDK0ozUVEwUDhiR0orUU8zK1JpMmZ0NTYvWFpoZUY3ck4ySS95RFZpL3plb1BqL3pQVmtwSnpsU3YyNWYvbkQrT2lvdmU4bXptc1oyOVBKblZROWEyYjA3WnU4dVNqK1FaNkhML1AvOW5jOUJDdngxc0U5RGd4VVpHdmp4anA5WXFRUmtDUUVCQWtCQVFKQVVGQ1FKQVFFQ1FFQkFrQlFVSkFrSVRFejhMdzVPSWJDQklDZ29TQUlDRWdTQWdJRWdLQ2hJQWdJU0JJQ0FnU0FvS0VnQ0FoSUVnSUNCSUNnb1NBSUNFZ1NBZ0lFZ0tDaElBZ0lTQklDQWdTQW9LRWdDQWhJRWdJQ0JJQ2dvU0FJQ0VnU0FnSUVnS0NoSUFnSVNCSUNBZ1NBb0tFZ0NBaElFZ0lDQklDZ29TQUlDRWdTQWdJRWdLQ2hJQWdJU0JJQ0FnU0FvS0VnQ0FoSUVnSUNCSUNnb1NBSUNFZ1NBZ0lFZ0tDaElBZ0lTQklDQWdTQW9LRWdDQWhJRWdJQ0JJQ2dvU0FJUGtIY1dOVTlnaVpKck1BQUFBQVNVVk9SSzVDWUlJPSIsInNpemVzIjoiMTkyeDE5MiIsInR5cGUiOiJpbWFnZS9wbmcifSx7InNyYyI6ImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBZ0FBQUFJQUNBSUFBQUI3R2tPdEFBQVMza2xFUVZSNG5PM2RlNHlWOVozSDhibHhrNHVVaFJLcUxCVXRhbEJYaVdoVVRNQXNXbGlLVW9ReFlwbjlvMllOU05Xb0NWcFRUVnRYWTViUXVvREpwa1lCbDNiR2RTeDRXWEFwRVVrVVhkR0Z1cUFyeFFWRlJBRkJ1UWpEek93L0pzMUQzS29JOHozbmZGK3YvMC95U2M3elBPLzhrdWZrVkErNjg4WXFBUEtwaVI0QVFBd0JBRWhLQUFDU0VnQ0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlDa0JBRWhLQUFDU0VnQ0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlDa0JBRWhLQUFDU0VnQ0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlDa0JBRWhLQUFDU0VnQ0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlDa0JBRWhLQUFDU0VnQ0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlDa0JBRWhLQUFDU0VnQ0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlDa0JBRWhLQUFDU0VnQ0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlDa0JBRWhLQUFDU0VnQ0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlDa0JBRWhLQUFDU0VnQ0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlDa0JBRWhLQUFDU0VnQ0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlDa0JBRWhLQUFDU0VnQ0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlDa0JBRWhLQUFDU0VnQ0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlDa0JBRWhLQUFDU0VnQ0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlDa0JBRWhLQUFDU0VnQ0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlLbTY2QUVWYnNyd2kzLzYvZkd4Ry81ejg2YUdCZjhTdTZIMFBmN2pHVU1IbkJTOWdxOXE4bS9tdkxIdHZlZ1ZaYzhKQUNBcEFRQklTZ0FBa2hJQWdLUUVBQ0FwQVFCSVNnQUFraElBZ0tRRUFDQXBBUUJJU2dBQWtoSUFnS1FFQUNBcEFRQklTZ0FBa2hJQWdLUUVBQ0FwQVFCSVNnQUFraElBZ0tRRUFDQXBBUUJJU2dBQWtoSUFnS1FFQUNBcEFRREt6NkhXdzlFVEtvRUFBR1htdDYrKzlEOGZmaEM5b2hJSUFGQk9YdjdmUC8zanNxZWlWMVFJQVFES3hwWmRPMi8rdDM5dGJXdUxIbEloQkFBb0Qzc1BIcHpXT0gvUGdmM1JReXFIQUFCbG9LMjkvYmJtUlp0MmZCZzlwS0lJQUZBR1ppMS85b1dOYjBXdnFEUjEwUU9nSkV6NnpUOUhUeWdKdmJ1ZDBQVGpHMC91M1NkNlNNSHYxNjU1WlBXcTZCVVZ5QWtBK0Z4ZFRlMnZKbDFYYWsvLy8zcHZ5ejNQUEJtOW9qSUpBUEM1dThhTXYyRFE0T2dWQlI5OHNtZEcwd0kvK3pwT0JBQ29xcXFxbWpMODRzbkRMb3hlVWZCWlM4dTB4dms3OSsyTkhsS3hCQUNvdXVpVTAyWmVQaTU2UlVGN1Zmdk14WTF2ZnZCKzlKQktKZ0NRM1YvMythdlpWMCtwclNtdHA4SGNsY3VmMi9CRzlJb0tWMXBmT2REQmVuYnBPcS8rNzN0MTdSWTlwR0RaK2o4KzlNS0s2QldWVHdBZ3I5cnFtbGtUcngzY3QxLzBrSUwxMjdiZXNhU3B2YW85ZWtqbEV3REk2N2JSWTBlY09pUjZSY0dPdlo5T2IxcndXVXRMOUpBVUJBQ1NtbkR1K1EwWGpvaGVVWENvOWZDTXBvWGJQOWtUUFNRTEFZQ01oZzBjZE0vWUNkRXJqblQzMDgxcnQyNkpYcEdJQUVBNkEwN3MvZUNrSDNXcXJZMGVVdkR3aXlzWHIzc3Rla1V1QWdDNWRPdlVlVjU5UTUvdVBhS0hGS3g4KzgzWks1WkdyMGhIQUNDUjZxcnErNithZkhyL0FkRkRDdjcwMFllM05mKzJyZDFyUHgxTkFDQ1JHU05Iano3anJPZ1ZCYnNQN0ovVytPaStRd2VqaDJRa0FKREZtS0huM0hEcFpkRXJDbHJiMm01Ky9MRjNQOTRWUFNRcEFZQVVoZzQ0NmQ3eGs2SlhIT21YU3hlL3NubFQ5SXE4QkFBcVg5OGVQZWZVTjNTdDZ4UTlwR0RScXk4MXJuazVla1ZxQWdBVnJrdGQzWnpKVS92MzdCVTlwR0QxT3h2dlcvWlU5SXJzQkFBcTNNL0hUVHpucElIUkt3cTI3TnA1eXhPTFd0dmFvb2RrSndCUXlhNi9aT1FQemo0dmVrWEIzb01IcHpYTzMzTmdmL1FRQkFBcTE2Z2haOTQwNm9yb0ZRVnQ3ZTIzTmkvYXRPUEQ2Q0ZVVlFrQVZLclQrdlYvWU1JMU5kWFYwVU1LWmkxL2R0WEd0NkpYOERrQmdBclV1OXNKODY1cDZONjVTL1NRZ3QrdlhmUEk2bFhSSy9nekFZQktVMWRUKyt0SjE1M2N1MC8wa0lMWDM5dDg5elBOMFNzb0VBQ29OSGVOdVhMNG9NSFJLd3EyN2RuOWs2YUZMYTJ0MFVNb0VBQ29LRk9HWHp4NTJBWFJLd28rYTJtWjNyUmc1NzY5MFVNNGtnQkE1YmpvbE5ObVhqNHVla1ZCZTFYN3pNV05iMzd3ZnZRUXZvQUFRSVVZMUtmdjdLdW4xTmFVMWswOWQrWHk1emE4RWIyQ0wxWmExd3B3ZEhwMjZUcTN2cUZYMTI3UlF3cVdyZi9qUXkrc2lGN0IvMHNBb096VlZ0Zk1tbmp0NEw3OW9vY1VyTisyOVk0bFRlMVYvdWFsZEFrQWxMM2JSbzhkY2VxUTZCVUZPL1orT3IxcHdXY3RMZEZEK0VzRUFNcmJoSFBQYjdod1JQU0tna090aDJjMExkeit5WjdvSVh3SkFZQXlObXpnb0h2R1RvaGVjYVM3bjI1ZXUzVkw5QXErbkFCQXVScHdZdThISi8yb1UyMXQ5SkNDaDE5Y3VYamRhOUVyK0VvRUFNcFN0MDZkNTlVMzlPbmVJM3BJd2ZOdmI1aTlZbW4wQ3I0cUFZRHlVMTFWZmY5VmswL3ZQeUI2U01HZlB2cnc5dWJmdGJWNzdhZHNDQUNVbnhralI0OCs0NnpvRlFXN0QreWYxdmpvdmtNSG80ZndOUWdBbEpreFE4KzU0ZExMb2xjVXRMYTEzZno0WSs5K3ZDdDZDRitQQUVBNUdUcmdwSHZIVDRwZWNhUmZMbDM4eXVaTjBTdjQyZ1FBeWtiZkhqM24xRGQwcmVzVVBhUmcwYXN2TmE1NU9Yb0ZSME1Bb0R4MHFhdWJNM2xxLzU2OW9vY1VySDVuNDMzTG5vcGV3VkVTQUNnUFB4ODM4WnlUQmthdktOaXlhK2N0VHl4cWJXdUxIc0pSRWdBb0E5ZGZNdklIWjU4WHZhSmc3OEdEMHhybjd6bXdQM29JUjA4QW9OU05HbkxtVGFPdWlGNVIwTmJlZm12em9rMDdQb3dld2pjaUFGRFN2dmZ0L2c5TXVLYW11anA2U01HczVjK3UydmhXOUFxK0tRR0EwdFc3MndsejZ4dTZkKzRTUGFUZ3liVnJIbG05S25vRng0QUFRSW1xcTZuOTlhVHJUdTdkSjNwSXdldnZiYjdubWVib0ZSd2JBZ0FsNnE0eFZ3NGZORGg2UmNHMlBidG5OQzFzYVcyTkhzS3hJUUJRaXFZTXYzanlzQXVpVnhRY2FEazB2V25Ccm4xN280ZHd6QWdBbEp5TFRqbHQ1dVhqb2xjVXRGZTEzN0c0NmMwUDNvOGV3ckVrQUZCYUJ2WHBPL3ZxS2JVMXBYVnZ6bDI1L0xrTmIwU3Y0QmdycllzTWt1dlpwZXZjK29aZVhidEZEeWxZdHY2UEQ3MndJbm9GeDU0QVFLbW9yYTZaTmZIYXdYMzdSUThwV0w5dDZ4MUxtdHFyL00xTEJSSUFLQlczalI0NzR0UWgwU3NLZHV6OWRIclRnczlhV3FLSGNGd0lBSlNFSDU1N2ZzT0ZJNkpYRkJ4cVBUeWphZUgyVC9aRUQrRjRFUUNJTjJ6Z29MdkhUb2hlY2FTZlBkMjhkdXVXNkJVY1J3SUF3UWFjMlB2QlNUL3FWRnNiUGFUZzRSZFhMbG4zV3ZRS2ppOEJnRWpkT25XZVY5L1FwM3VQNkNFRno3KzlZZmFLcGRFck9PNEVBTUpVVjFYZmY5WGswL3NQaUI1U3NQR2o3YmMzLzY2dDNXcy9sVThBSU15TWthTkhuM0ZXOUlxQzNRZjJUMitjdisvUXdlZ2hkQVFCZ0JoamhwNXp3NldYUmE4b09OeldldlBqajczNzhhN29JWFFRQVlBQVF3ZWNkTy80U2RFcmpuVHYwaVd2Yk40VXZZS09Jd0RRMGZyMTZEbW52cUZyWGFmb0lRV0xYbjJwY2MzTDBTdm9VQUlBSGFwTFhkMmMrcW45ZS9hS0hsS3crcDJOOXkxN0tub0ZIVTBBb0VQOVl0ekVzNzh6TUhwRndaWmRPMjk1WWxGclcxdjBFRHFhQUVESHVmNlNrZVBPUGk5NlJjSGVnd2VuTmM3ZmMyQi85QkFDQ0FCMGtGRkR6cnhwMUJYUkt3cmEydHR2YlY2MGFjZUgwVU9JSVFEUUViNzM3ZjRQVExpbXBybzZla2pCck9YUHJ0cjRWdlFLd2dnQUhIZmZPcUg3M1BxRzdwMjdSQThwZUhMdG1rZFdyNHBlUVNRQmdPT3JycWIyVjFkUE9ibDNuK2doQmErL3QvbWVaNXFqVnhCTUFPRDR1bXZNbGNNSERZNWVVYkJ0eis0WlRRdGJXbHVqaHhCTUFPQTRtakw4NHNuRExvaGVVWENnNWREMHBnVzc5dTJOSGtJOEFZRGo1YUpUVHB0NStiam9GUVh0VmUxM0xHNTY4NFAzbzRkUUVnUUFqb3RCZmZyT3ZucEtiVTFwM1dKelZ5NS9ic01iMFNzb0ZhVjFkVUpsNk5tbDY5ejZobDVkdTBVUEtWaTZmdDI4Ri80UXZZSVNJZ0J3ak5WVzE4eWFlTzNndnYyaWh4U3MzN2IxemlXUFI2K2d0QWdBSEdPM2p4NDc0dFFoMFNzS2R1ejlkSHJUZ3M5YVdxS0hVRm9FQUk2bEg1NTcvdFFMUjBTdktEalVlbmhHMDhMdG4reUpIa0xKRVFBNFpvWU4vTzdkWXlkRXJ6alN6NTV1WHJ0MVMvUUtTcEVBd0xFeDRNVGVEMDY2cmxOdGJmU1Fnb2RmWExsazNXdlJLeWhSQWdESFFMZE9uZWZWTi9UcDNpTjZTTUh6YjIrWXZXSnA5QXBLbHdEQU4xVmRWWDMvVlpOUDd6OGdla2pCeG8rMjM5Nzh1N2IyOXVnaGxDNEJnRzlxeHNqUm84ODRLM3BGd2U0RCs2YzN6dDkzNkdEMEVFcWFBTUEzTW1ib09UZGNlbG4waW9MRGJhMDNQLzdZdXgvdmloNUNxUk1BT0hwREI1eDA3L2hKMFN1TzlNdC9YL0xLNWszUkt5Z0RBZ0JIcVYrUG5uUHFHN3JXZFlvZVVyRG8xWmVhWG5zNWVnWGxRUURnYUhTcHE1dFRQN1YvejE3UlF3cFd2N1B4dm1WUFJhK2diQWdBSEkxZmpKdDQ5bmNHUnE4bzJMSnI1eTFQTEdwdGE0c2VRdGtRQVBqYXJyOWs1TGl6ejR0ZVViRDM0TUZwalkvdU9iQS9lZ2psUkFEZzZ4azE1TXliUmwwUnZhS2dyYjM5MXVaRm0zWjhGRDJFTWlNQThEVjg3OXY5SDVod1RVMTFkZlNRZ245YS91eXFqVzlGcjZEOENBQjhWZDg2b2Z2YytvYnVuYnRFRHlsNGN1MmFSMWV2aWw1QldSSUErRXJxYW1wL2RmV1VrM3YzaVI1UzhQcDdtKzk1cGpsNkJlVktBT0FydVd2TWxjTUhEWTVlVWJCdHorNFpUUXRiV2x1amgxQ3VCQUMrM0pUaEYwOGVka0gwaW9JRExZZW1OYzdmdFc5djlCREttQURBbDdqb2xOTm1YajR1ZWtWQmUxWDd6TjgzdmJWOVcvUVF5cHNBd0Y4eXFFL2YyVmRQcWEwcHJUdGx6dlBMLytQTk42SlhVUFpLNjdLR2t0S3pTOWU1OVEyOXVuYUxIbEt3ZFAyNmgxYjlJWG9GbFVBQTRJdlZWdGZNbW5qdDRMNzlvb2NVck4rMjljN0ZqMGV2b0VJSUFIeXgyMGVQSFhIcWtPZ1ZCVHYyZmpxOWFjRm5oMXVpaDFBaEJBQyt3QS9QUFgvcWhTT2lWeFFjYWoxOFk5T0M3Wi9zaVI1QzVSQUFPTkt3Z2QrOWUreUU2QlZIK3RuVHpldTJ2aHU5Z29vaUFGQXc0TVRlRDA2NnJsTnRiZlNRZ3QrOHVITEp1dGVpVjFCcEJBRCtyRnVuenZQcUcvcDA3eEU5cE9ENXR6Zjhhc1hTNkJWVW9PcEJkOTRZdmFHU1RSbCs4VSsvUHo1NlJSWXptaGIrNGEzL1B1cVBWMWRWLzNyU2RYOTd4dEJqT0luajZwMmRILzNkdkZuUks4cVlFd0I4N2llalJudjZrNG9BUUZWVlZkV1lvZWY4dzRqTG9sZEFoeElBcURwcndNbjNqcDhVdlFJNm1nQ1FYYjhlUGYrNWZtclh1azdSUTZDakNRQ3BkYW1ybTFNL3RYL1BYdEZESUlBQWtOcUV2em4vN084TWpGNEJNUVNBMURyWDFVVlBnREFDQUpDVUFBQWtKUUFBU1FrQVFGSUNBSkNVQUFBa0pRQUFTUWtBUUZJQ0FKQ1VBQUFrSlFBQVNRa0FRRklDQUpDVUFBQWtKUUFBU1FrQVFGSUNBSkNVQUFBa0pRQUFTUWtBUUZJQ0FKQ1VBQUFrSlFBQVNRa0FRRklDQUpCVTlhQTdiNHplQUVBQUp3Q0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlDa0JBRWhLQUFDU0VnQ0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlDa0JBRWhLQUFDU0VnQ0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlDa0JBRWhLQUFDU0VnQ0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlDa0JBRWhLQUFDU0VnQ0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlDa0JBRWhLQUFDU0VnQ0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlDa0JBRWhLQUFDU0VnQ0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlDa0JBRWhLQUFDU0VnQ0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlDa0JBRWhLQUFDU0VnQ0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlDa0JBRWhLQUFDU0VnQ0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlDa0JBRWhLQUFDU0VnQ0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlDa0JBRWhLQUFDU0VnQ0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlDa0JBRWhLQUFDU0VnQ0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlDa0JBRWhLQUFDU0VnQ0FwQVFBSUNrQkFFaEtBQUNTRWdDQXBBUUFJQ2tCQUVoS0FBQ1NFZ0NBcEFRQUlDa0JBRWhLQUFDU0VnQ0FwQVFBSUtuL0EyUUZXeFZGYU1JcUFBQUFBRWxGVGtTdVFtQ0MiLCJzaXplcyI6IjUxMng1MTIiLCJ0eXBlIjoiaW1hZ2UvcG5nIn1dfQ==">
+<style>
+  :root{
+    --bg:#F5F7F4;
+    --surface:#FFFFFF;
+    --surface-2:#EEF2EF;
+    --ink:#172420;
+    --ink-muted:#5E6E68;
+    --border:#DCE3DE;
+    --accent:#1F7A6C;
+    --accent-ink:#0E4038;
+    --accent-soft:#E3F1EC;
+    --ok:#2E7D4F;
+    --ok-soft:#E7F5EC;
+    --warn:#93630A;
+    --warn-soft:#FBF1DE;
+    --danger:#AA3939;
+    --danger-soft:#FBEAE8;
+    --shadow: 0 1px 2px rgba(23,36,32,0.06), 0 8px 24px rgba(23,36,32,0.08);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#101613;
+      --surface:#172420;
+      --surface-2:#1D2B26;
+      --ink:#EAF1EC;
+      --ink-muted:#9FB0A9;
+      --border:#2B3B35;
+      --accent:#5FCBB2;
+      --accent-ink:#DFF7F0;
+      --accent-soft:#1E3A34;
+      --ok:#7ED2A0;
+      --ok-soft:#1C3327;
+      --warn:#E6B863;
+      --warn-soft:#3A2E17;
+      --danger:#E68F8F;
+      --danger-soft:#3A1F1F;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#101613;
+    --surface:#172420;
+    --surface-2:#1D2B26;
+    --ink:#EAF1EC;
+    --ink-muted:#9FB0A9;
+    --border:#2B3B35;
+    --accent:#5FCBB2;
+    --accent-ink:#DFF7F0;
+    --accent-soft:#1E3A34;
+    --ok:#7ED2A0;
+    --ok-soft:#1C3327;
+    --warn:#E6B863;
+    --warn-soft:#3A2E17;
+    --danger:#E68F8F;
+    --danger-soft:#3A1F1F;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+  }
+
+  *{ box-sizing:border-box; }
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"IBM Plex Sans", system-ui, sans-serif;
+    font-size:14px;
+    line-height:1.45;
+  }
+  .mono{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-variant-numeric:tabular-nums; }
+  h1,h2,h3{ text-wrap:balance; margin:0; }
+  button{ font-family:inherit; font-size:inherit; cursor:pointer; }
+  input,select,textarea{ font-family:inherit; font-size:inherit; }
+  #app{ max-width:1180px; margin:0 auto; padding:0 20px 64px; }
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:20;
+    display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+    padding:16px 0 14px;
+    background:var(--bg);
+    border-bottom:1px solid var(--border);
+    margin-bottom:16px;
+  }
+  .brand{ display:flex; flex-direction:column; gap:1px; flex:0 0 auto; }
+  .brand-mark{ font-size:19px; font-weight:700; letter-spacing:-0.01em; }
+  .brand-mark span{ color:var(--accent); }
+  .brand-sub{ font-size:11.5px; color:var(--ink-muted); text-transform:uppercase; letter-spacing:0.06em; }
+  .search-wrap{ flex:1 1 auto; max-width:340px; position:relative; }
+  .search-wrap input{
+    width:100%; padding:9px 12px 9px 32px; border-radius:8px;
+    border:1px solid var(--border); background:var(--surface); color:var(--ink);
+  }
+  .search-wrap input:focus{ outline:2px solid var(--accent); outline-offset:1px; }
+  .search-wrap svg{ position:absolute; left:10px; top:50%; transform:translateY(-50%); opacity:0.5; }
+  .topbar-actions{ display:flex; align-items:center; gap:10px; margin-left:auto; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:6px; white-space:nowrap;
+    padding:9px 14px; border-radius:8px; border:1px solid var(--border);
+    background:var(--surface); color:var(--ink); font-weight:500;
+    transition:background .12s, border-color .12s;
+  }
+  .btn:hover{ border-color:var(--accent); }
+  .btn:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  .btn:disabled{ opacity:0.55; cursor:default; }
+  .btn-primary{ background:var(--accent); border-color:var(--accent); color:#fff; }
+  .btn-primary:hover{ filter:brightness(1.06); border-color:var(--accent); }
+  .btn-ghost{ background:transparent; border-color:transparent; }
+  .btn-ghost:hover{ background:var(--surface-2); border-color:var(--border); }
+  .btn-danger{ color:var(--danger); }
+  .lock-hint{ opacity:0.65; font-size:11px; }
+  .icon-btn{
+    width:30px; height:30px; display:inline-flex; align-items:center; justify-content:center;
+    border-radius:7px; border:1px solid var(--border); background:var(--surface); color:var(--ink-muted);
+  }
+  .icon-btn:hover{ color:var(--ink); border-color:var(--accent); }
+
+  .userpill{
+    display:flex; align-items:center; gap:8px; padding:6px 12px 6px 6px;
+    border-radius:999px; border:1px solid var(--border); background:var(--surface);
+  }
+  .userpill:hover{ border-color:var(--accent); }
+  .avatar{
+    width:24px; height:24px; border-radius:999px; background:var(--accent-soft); color:var(--accent-ink);
+    display:flex; align-items:center; justify-content:center; font-weight:600; font-size:12px; flex:0 0 auto;
+  }
+  .userpill-name{ font-weight:500; max-width:120px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+
+  /* ---------- Alert strip ---------- */
+  .alertstrip{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+  .chip{
+    display:inline-flex; align-items:center; gap:6px;
+    padding:6px 12px; border-radius:999px; border:1px solid transparent;
+    font-size:12.5px; font-weight:500; background:var(--surface-2); color:var(--ink-muted);
+  }
+  .chip.active{ box-shadow:0 0 0 2px inset currentColor; }
+  .chip-warn{ background:var(--warn-soft); color:var(--warn); }
+  .chip-danger{ background:var(--danger-soft); color:var(--danger); }
+  .chip-reset{ background:transparent; border-color:var(--border); color:var(--ink-muted); }
+  .chip-btn{ border:none; }
+  .chip .dot{ width:6px; height:6px; border-radius:999px; background:currentColor; }
+
+  /* ---------- Tabs ---------- */
+  .tabs{ display:flex; gap:4px; border-bottom:1px solid var(--border); margin-bottom:18px; }
+  .tab{
+    padding:9px 4px; margin-right:20px; background:none; border:none; border-bottom:2px solid transparent;
+    color:var(--ink-muted); font-weight:500;
+  }
+  .tab.active{ color:var(--ink); border-bottom-color:var(--accent); }
+  .tab .count{ color:var(--ink-muted); font-weight:400; margin-left:4px; }
+
+  /* ---------- Filter bar ---------- */
+  .filterbar{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
+  .pill-toggle{ display:flex; gap:4px; padding:3px; background:var(--surface-2); border-radius:9px; }
+  .pill-toggle button{
+    padding:6px 12px; border-radius:7px; border:none; background:transparent; color:var(--ink-muted); font-weight:500; font-size:12.5px;
+  }
+  .pill-toggle button.active{ background:var(--surface); color:var(--ink); box-shadow:var(--shadow); }
+  .filterbar select{
+    padding:7px 10px; border-radius:7px; border:1px solid var(--border); background:var(--surface); color:var(--ink);
+  }
+  .result-count{ margin-left:auto; color:var(--ink-muted); font-size:12.5px; }
+
+  /* ---------- Table ---------- */
+  .table-wrap{ overflow-x:auto; border:1px solid var(--border); border-radius:12px; background:var(--surface); }
+  table{ width:100%; border-collapse:collapse; min-width:780px; }
+  thead th{
+    text-align:left; font-size:11.5px; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-muted);
+    font-weight:600; padding:10px 14px; border-bottom:1px solid var(--border); background:var(--surface-2);
+    position:sticky; top:0;
+  }
+  tbody td{ padding:12px 14px; border-bottom:1px solid var(--border); vertical-align:top; }
+  tbody tr:last-child td{ border-bottom:none; }
+  tbody tr:hover{ background:var(--surface-2); }
+  .item-name{ font-weight:600; }
+  .item-meta{ color:var(--ink-muted); font-size:12px; margin-top:2px; }
+  .qty-cell{ white-space:nowrap; }
+  .qty-value{ font-weight:600; }
+  .badge{
+    display:inline-flex; align-items:center; gap:4px; padding:3px 8px; border-radius:999px;
+    font-size:11px; font-weight:600; letter-spacing:0.02em; margin-top:4px;
+  }
+  .badge-cat{ background:var(--surface-2); color:var(--ink-muted); font-weight:500; text-transform:none; }
+  .badge-warn{ background:var(--warn-soft); color:var(--warn); }
+  .badge-danger{ background:var(--danger-soft); color:var(--danger); }
+  .badge-ok{ background:var(--ok-soft); color:var(--ok); }
+  .row-actions{ display:flex; gap:6px; justify-content:flex-end; }
+  .empty-state{ padding:56px 20px; text-align:center; color:var(--ink-muted); }
+  .empty-state .big{ font-size:32px; margin-bottom:10px; }
+
+  @media (max-width:760px){
+    table, thead, tbody, tr, td, th{ display:block; }
+    thead{ display:none; }
+    tbody tr{ padding:12px 14px; border-bottom:1px solid var(--border); }
+    tbody td{ border:none; padding:4px 0; }
+    .row-actions{ justify-content:flex-start; margin-top:8px; }
+  }
+
+  /* ---------- Protocol cards ---------- */
+  .protocols-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:14px; }
+  .protocol-card{
+    border:1px solid var(--border); border-radius:12px; background:var(--surface); padding:16px;
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .protocol-title{ font-weight:600; font-size:15px; }
+  .protocol-desc{ color:var(--ink-muted); font-size:12.5px; }
+  .protocol-lines{ display:flex; flex-direction:column; gap:6px; margin:2px 0; }
+  .protocol-line{ display:flex; align-items:center; gap:8px; font-size:13px; }
+  .protocol-line .dot{ width:7px; height:7px; border-radius:999px; flex:0 0 auto; }
+  .protocol-line .lname{ flex:1 1 auto; }
+  .protocol-line .lqty{ color:var(--ink-muted); }
+  .protocol-footer{ display:flex; align-items:center; justify-content:space-between; margin-top:auto; padding-top:8px; border-top:1px solid var(--border); }
+  .protocol-status{ font-size:12px; font-weight:600; padding:4px 10px; border-radius:999px; }
+  .protocol-meta{ font-size:11.5px; color:var(--ink-muted); }
+
+  /* ---------- Activity ---------- */
+  .activity-list{ display:flex; flex-direction:column; }
+  .activity-item{ display:flex; gap:12px; padding:12px 0; border-bottom:1px solid var(--border); }
+  .activity-item:last-child{ border-bottom:none; }
+  .activity-icon{
+    width:28px; height:28px; border-radius:999px; background:var(--surface-2); color:var(--accent);
+    display:flex; align-items:center; justify-content:center; flex:0 0 auto; font-size:14px;
+  }
+  .activity-text{ flex:1 1 auto; }
+  .activity-title{ font-size:13.5px; }
+  .activity-title b{ font-weight:600; }
+  .activity-sub{ font-size:12px; color:var(--ink-muted); margin-top:1px; }
+
+  /* ---------- Drawer & overlay ---------- */
+  .overlay{
+    position:fixed; inset:0; background:rgba(16,22,19,0.4); z-index:40;
+    opacity:0; pointer-events:none; transition:opacity .15s;
+  }
+  .overlay.show{ opacity:1; pointer-events:auto; }
+  .drawer{
+    position:fixed; top:0; right:0; height:100%; width:min(460px,100%);
+    background:var(--surface); border-left:1px solid var(--border); z-index:41;
+    transform:translateX(100%); transition:transform .18s ease; display:flex; flex-direction:column;
+  }
+  .drawer.open{ transform:translateX(0); }
+  .drawer-head{ display:flex; align-items:center; justify-content:space-between; padding:18px 20px; border-bottom:1px solid var(--border); }
+  .drawer-head h2{ font-size:16px; }
+  .drawer-body{ padding:20px; overflow-y:auto; flex:1 1 auto; }
+  .field{ margin-bottom:14px; }
+  .field label{ display:block; font-size:12.5px; font-weight:500; color:var(--ink-muted); margin-bottom:5px; }
+  .field input, .field select, .field textarea{
+    width:100%; padding:9px 11px; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--ink);
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{ outline:2px solid var(--accent); outline-offset:1px; }
+  .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .radio-row{ display:flex; gap:8px; }
+  .radio-opt{
+    flex:1 1 0; padding:9px; border-radius:8px; border:1px solid var(--border); text-align:center; font-size:12.5px; font-weight:500; color:var(--ink-muted);
+  }
+  .radio-opt.active{ border-color:var(--accent); color:var(--accent-ink); background:var(--accent-soft); }
+  .drawer-foot{ padding:16px 20px; border-top:1px solid var(--border); display:flex; gap:10px; }
+  .drawer-foot .btn{ flex:1 1 auto; justify-content:center; }
+  .helper-text{ font-size:11.5px; color:var(--ink-muted); margin-top:4px; }
+  .lines-list{ display:flex; flex-direction:column; gap:6px; margin:10px 0 4px; }
+  .lines-list .line{ display:flex; align-items:center; gap:8px; padding:8px 10px; background:var(--surface-2); border-radius:8px; font-size:12.5px; }
+  .lines-list .line .n{ flex:1 1 auto; font-weight:500; }
+  .add-line-row{ display:flex; gap:8px; align-items:flex-end; }
+  .add-line-row .field{ margin-bottom:0; flex:1 1 auto; }
+  .add-line-row .field.qty{ flex:0 0 90px; }
+  .invoice-row-inputs input, .invoice-row-inputs select{
+    padding:6px 8px; border-radius:6px; border:1px solid var(--border); background:var(--surface); color:var(--ink);
+  }
+  .label-photo-box{
+    background:var(--surface-2); padding:12px; border-radius:10px; margin-bottom:18px;
+  }
+  .camera-video{
+    width:100%; border-radius:10px; background:#000; display:block; max-height:320px; object-fit:cover;
+  }
+
+  /* ---------- Identity modal ---------- */
+  .modal{
+    position:fixed; inset:0; z-index:60; display:flex; align-items:center; justify-content:center;
+    background:rgba(16,22,19,0.5); padding:20px;
+  }
+  .modal-card{
+    width:min(420px,100%); background:var(--surface); border-radius:14px; padding:26px; box-shadow:var(--shadow);
+  }
+  .modal-card h2{ font-size:18px; margin-bottom:4px; }
+  .modal-card p{ color:var(--ink-muted); font-size:13px; margin:0 0 14px; }
+  .name-grid{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+  .name-chip{ padding:8px 14px; border-radius:999px; border:1px solid var(--border); background:var(--surface); font-weight:500; }
+  .name-chip:hover{ border-color:var(--accent); }
+
+  /* ---------- Banner / toast ---------- */
+  .banner{
+    background:var(--warn-soft); color:var(--warn); border:1px solid var(--warn); border-radius:10px;
+    padding:10px 14px; font-size:12.5px; margin-bottom:16px;
+  }
+  #toast{
+    position:fixed; bottom:22px; left:50%; transform:translateX(-50%) translateY(8px);
+    background:var(--ink); color:var(--bg); padding:10px 18px; border-radius:999px; font-size:13px;
+    max-width:90vw; text-align:center;
+    opacity:0; pointer-events:none; transition:opacity .15s, transform .15s; z-index:80;
+  }
+  #toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+  [hidden]{ display:none !important; }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; } }
+</style>
+
+<div id="app">
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-mark">Lab<span>Master</span></div>
+      <div class="brand-sub">Inventar hemikalija i potrošnog materijala</div>
+    </div>
+    <div class="search-wrap">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.6" y2="16.6"/></svg>
+      <input id="searchInput" type="text" placeholder="Pretraga po nazivu, CAS broju, lokaciji…" autocomplete="off">
+    </div>
+    <div class="topbar-actions">
+      <button class="btn" id="scanBarcodeBtn" title="Skeniraj ili unesi bar kod za brzu dopunu/trošenje">🔍 Bar kod</button>
+      <button class="btn" id="invoicePhotoBtn" hidden title="Samo administratori mogu da sačuvaju nove stavke">📷 Foto računa <span class="lock-hint">🔒</span></button>
+      <button class="btn" id="addItemBtn" hidden title="Vidljivo samo administratorima">+ Nova stavka <span class="lock-hint">🔒</span></button>
+      <button class="userpill" id="userPillBtn" title="Nalog">
+        <span class="avatar" id="userAvatar">?</span>
+        <span class="userpill-name" id="userPillName">Ko si?</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="dbBanner" class="banner" hidden></div>
+  <div class="alertstrip" id="alertStrip" hidden></div>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="inventar">Inventar <span class="count" id="countInventar"></span></button>
+    <button class="tab" data-tab="protokoli">Liste za eksperiment <span class="count" id="countProtokoli"></span></button>
+    <button class="tab" data-tab="aktivnost">Aktivnost</button>
+  </nav>
+
+  <section id="panel-inventar">
+    <div class="filterbar">
+      <div class="pill-toggle" id="categoryToggle">
+        <button data-cat="sve" class="active">Sve</button>
+        <button data-cat="hemikalija">Hemikalije</button>
+        <button data-cat="potrosni">Potrošni materijal</button>
+      </div>
+      <select id="sortSelect">
+        <option value="name">Naziv A–Š</option>
+        <option value="qty">Količina, rastuće</option>
+        <option value="expiry">Rok trajanja</option>
+      </select>
+      <span class="result-count" id="resultCount"></span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Stavka</th>
+            <th>Kategorija</th>
+            <th>Količina</th>
+            <th>Prostorija / mesto</th>
+            <th>Rok trajanja</th>
+            <th>Poslednja izmena</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="itemsBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="panel-protokoli" hidden>
+    <div class="filterbar">
+      <button class="btn" id="addProtocolBtn">+ Nova lista za eksperiment</button>
+      <span class="result-count" id="protocolCount"></span>
+    </div>
+    <div class="protocols-grid" id="protocolsGrid"></div>
+  </section>
+
+  <section id="panel-aktivnost" hidden>
+    <div class="activity-list" id="activityList"></div>
+  </section>
+</div>
+
+<div class="overlay" id="overlay"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <h2 id="drawerTitle">Naslov</h2>
+    <button class="icon-btn" id="drawerCloseBtn">✕</button>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+  <div class="drawer-foot" id="drawerFoot"></div>
+</div>
+
+<div id="authScreen" class="modal" hidden>
+  <div class="modal-card">
+    <div class="brand-mark" style="margin-bottom:16px;">Lab<span>Master</span></div>
+    <div id="authBootstrap" hidden>
+      <h2>Postavi glavnog administratora</h2>
+      <p>Ovo je prvo otvaranje ovog inventara. Kao vlasnik stranice, postavi svoj administratorski nalog — kasnije ćeš iz njega dodeljivati naloge ostalim članovima.</p>
+      <div class="field"><label for="bs_displayName">Ime i prezime</label><input id="bs_displayName" type="text" placeholder="npr. Aleksandar Petrović"></div>
+      <div class="field"><label for="bs_username">Korisničko ime</label><input id="bs_username" type="text" autocomplete="off" placeholder="npr. aleksandar"></div>
+      <div class="field"><label for="bs_password">Šifra</label><input id="bs_password" type="password" autocomplete="new-password"></div>
+      <div class="field"><label for="bs_password2">Ponovi šifru</label><input id="bs_password2" type="password" autocomplete="new-password"></div>
+      <button class="btn btn-primary" id="bootstrapBtn" style="width:100%; justify-content:center;">Kreiraj glavni administratorski nalog</button>
+      <p class="helper-text" id="bootstrapStatus" style="margin-top:10px;"></p>
+    </div>
+    <div id="authLogin" hidden>
+      <h2>Prijava</h2>
+      <p>Unesi korisničko ime i šifru koje ti je dodelio administrator inventara.</p>
+      <div class="field"><label for="li_username">Korisničko ime</label><input id="li_username" type="text" autocomplete="username"></div>
+      <div class="field"><label for="li_password">Šifra</label><input id="li_password" type="password" autocomplete="current-password"></div>
+      <button class="btn btn-primary" id="loginBtn" style="width:100%; justify-content:center;">Prijavi se</button>
+      <p class="helper-text" id="loginStatus" style="margin-top:10px;"></p>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  // ---------------- State ----------------
+  var db = null;
+  var sampleFn = null;
+  var accounts = [];           // {username, passwordHash, salt, displayName, role, superAdmin, createdAt}
+  var currentSession = null;   // {username, displayName, role, superAdmin}
+  try {
+    var rawSession = localStorage.getItem('labzaliha_session');
+    if(rawSession) currentSession = JSON.parse(rawSession);
+  } catch(e){ currentSession = null; }
+  var currentUser = currentSession ? currentSession.displayName : null;
+  var itemsById = new Map();   // metadata: name, category, casNumber, unit, minQuantity, lotNumber, location, expiryDate, notes, barcode
+  var stockById = new Map();   // quantity, history[], updatedAt, updatedBy
+  var protocols = [];
+  var activeTab = 'inventar';
+  var filterCategory = 'sve';
+  var filterAlert = null;
+  var searchQuery = '';
+  var sortMode = 'name';
+  var sampleImagesAvailable = false;
+  var activeCameraStream = null;
+  var hasBarcodeDetector = (typeof window.BarcodeDetector === 'function');
+
+  // ---------------- Helpers ----------------
+  function $(id){ return document.getElementById(id); }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function nowIso(){ return new Date().toISOString(); }
+  function fmtQty(n){
+    if(n==null || isNaN(n)) return '—';
+    return Number(n).toLocaleString('sr-RS', {maximumFractionDigits:2});
+  }
+  function fmtDate(iso){
+    if(!iso) return '—';
+    var parts = iso.split('-');
+    if(parts.length!==3) return iso;
+    return parts[2] + '.' + parts[1] + '.' + parts[0] + '.';
+  }
+  function fmtDateTime(iso){
+    if(!iso) return '—';
+    var d = new Date(iso);
+    if(isNaN(d.getTime())) return iso;
+    var dd = String(d.getDate()).padStart(2,'0');
+    var mm = String(d.getMonth()+1).padStart(2,'0');
+    var yy = d.getFullYear();
+    var hh = String(d.getHours()).padStart(2,'0');
+    var mi = String(d.getMinutes()).padStart(2,'0');
+    return dd+'.'+mm+'.'+yy+'. '+hh+':'+mi;
+  }
+  function categoryLabel(c){ return c==='hemikalija' ? 'Hemikalija' : 'Potrošni materijal'; }
+  function isLow(item){ return Number(item.minQuantity)>0 && Number(item.quantity) < Number(item.minQuantity); }
+  function daysUntil(dateStr){
+    if(!dateStr) return null;
+    var d = new Date(dateStr+'T00:00:00');
+    if(isNaN(d.getTime())) return null;
+    var now = new Date(); now.setHours(0,0,0,0);
+    return Math.round((d-now)/86400000);
+  }
+  function expiryStatus(item){
+    var d = daysUntil(item.expiryDate);
+    if(d==null) return null;
+    if(d<0) return 'expired';
+    if(d<=30) return 'soon';
+    return 'ok';
+  }
+  function initials(name){
+    if(!name) return '?';
+    var parts = name.trim().split(/\s+/);
+    return (parts[0][0] + (parts[1] ? parts[1][0] : '')).toUpperCase();
+  }
+  function toast(msg){
+    var t = $('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(toast._h);
+    toast._h = setTimeout(function(){ t.classList.remove('show'); }, 3200);
+  }
+  function handleWriteError(e){
+    if(e && e.code === 'invalid_argument'){
+      toast('Nemaš dozvolu za ovu izmenu — dodavanje, uređivanje i brisanje stavki je rezervisano za administratore inventara.');
+    } else {
+      toast('Greška — izmena nije sačuvana. Probaj ponovo.');
+    }
+  }
+
+  // merge metadata + stock into one render-friendly object
+  function mergedItem(id){
+    var meta = itemsById.get(id);
+    if(!meta) return null;
+    var stock = stockById.get(id) || {};
+    return Object.assign({id:id}, meta, {
+      quantity: stock.quantity!=null ? stock.quantity : 0,
+      history: stock.history || [],
+      updatedAt: stock.updatedAt || meta.createdAt,
+      updatedBy: stock.updatedBy || meta.createdBy
+    });
+  }
+  function mergedItemsArray(){
+    return Array.from(itemsById.keys()).map(mergedItem).filter(Boolean);
+  }
+
+  // ---------------- DB / Sample init ----------------
+  async function initDb(){
+    if(!window.claude || !window.claude.use){
+      showDbBanner();
+      applySessionToUI();
+      return;
+    }
+    try{ db = await window.claude.use('db'); }catch(e){ db = null; }
+    if(!db){
+      showDbBanner();
+      applySessionToUI();
+      return;
+    }
+    subscribeAccounts();
+    subscribeItems();
+    subscribeStock();
+    subscribeProtocols();
+  }
+
+  async function initSample(){
+    if(!window.claude || !window.claude.use){ return; }
+    try{ sampleFn = await window.claude.use('sample'); }catch(e){ sampleFn = null; }
+    if(!sampleFn){ return; }
+    try{
+      var limits = await sampleFn.limits();
+      sampleImagesAvailable = !!(limits && limits.images);
+    }catch(e){ sampleImagesAvailable = false; }
+    applySessionToUI();
+  }
+
+  // ---------------- Diagnostics: why is AI photo-reading missing? ----------------
+  async function runSampleDiagnostics(){
+    var lines = [];
+    lines.push('window.claude dostupan: ' + !!(window.claude && window.claude.use));
+    if(!window.claude || !window.claude.use){
+      lines.push('Ovaj prikaz stranice uopšte ne nudi Claude mogućnosti (verovatno prikaz van zvaničnog Claude pregledača).');
+      return lines.join('\n');
+    }
+    var testSample = null;
+    try{
+      testSample = await window.claude.use('sample');
+      lines.push('„sample“ mogućnost: ' + (testSample ? 'dostupna' : 'NIJE dostupna (vraćeno null)'));
+    }catch(e){
+      lines.push('„sample“ mogućnost: greška pri učitavanju — ' + (e && e.message ? e.message : String(e)));
+    }
+    if(testSample){
+      try{
+        var limits = await testSample.limits();
+        lines.push('limits(): ' + JSON.stringify(limits));
+        lines.push('Slike podržane u ovom prikazu: ' + (limits && limits.images ? 'DA' : 'NE'));
+      }catch(e){
+        lines.push('limits() greška: ' + (e && e.code ? e.code : String(e)));
+      }
+    }
+    var dbAvail = !!db;
+    lines.push('Deljena baza (db): ' + (dbAvail ? 'povezana' : 'nije povezana'));
+    return lines.join('\n');
+  }
+
+  async function openSampleDiagnosticsDrawer(){
+    openDrawer('Dijagnostika AI čitanja slika', '<p class="helper-text">Proveravam…</p>', '<button class="btn btn-ghost" id="cancelBtn">Zatvori</button>');
+    $('cancelBtn').addEventListener('click', closeDrawer);
+    var report = await runSampleDiagnostics();
+    $('drawerBody').innerHTML =
+      '<pre class="mono" style="white-space:pre-wrap; font-size:12px; background:var(--surface-2); padding:10px; border-radius:8px; margin:0;">' + esc(report) + '</pre>' +
+      '<p class="helper-text" style="margin-top:10px;">Ako ovde piše da slike NISU podržane, to je ograničenje ovog prikaza/naloga u ovom trenutku, a ne greška u samoj aplikaciji — dugmad za čitanje etikete i računa se zato ne prikazuju. Probaj da otvoriš stranicu direktno preko njenog linka (van razgovora sa Claude-om), u zvaničnoj Claude aplikaciji ili na claude.ai — ako ni tada slike nisu podržane, javi mi tačno šta piše ovde.</p>';
+  }
+
+  function showDbBanner(){
+    var b = $('dbBanner');
+    b.hidden = false;
+    b.textContent = 'Deljena baza podataka trenutno nije dostupna u ovom prikazu. Otvorite objavljenu stranicu da biste videli i menjali zajednički inventar u realnom vremenu.';
+  }
+
+  function subscribeItems(){
+    db.collection('items').onSnapshot(function(snap){
+      var map = new Map();
+      snap.docs.forEach(function(d){ map.set(d.id, d.data()); });
+      itemsById = map;
+      renderAll();
+    }, function(err){ toast('Greška pri učitavanju inventara.'); });
+  }
+
+  function subscribeStock(){
+    db.collection('stock').onSnapshot(function(snap){
+      var map = new Map();
+      snap.docs.forEach(function(d){ map.set(d.id, d.data()); });
+      stockById = map;
+      renderAll();
+    }, function(err){ toast('Greška pri učitavanju zaliha.'); });
+  }
+
+  function subscribeProtocols(){
+    db.collection('protocols').onSnapshot(function(snap){
+      protocols = snap.docs.map(function(d){ return Object.assign({id:d.id}, d.data()); });
+      renderProtocols();
+      renderTabCounts();
+    }, function(err){ toast('Greška pri učitavanju lista za eksperiment.'); });
+  }
+
+  // ---------------- Auth: password hashing ----------------
+  function randomSaltHex(){
+    var arr = new Uint8Array(16);
+    crypto.getRandomValues(arr);
+    return Array.from(arr).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+  }
+  async function hashPassword(password, saltHex){
+    var enc = new TextEncoder();
+    var data = enc.encode(saltHex + ':' + password);
+    var digest = await crypto.subtle.digest('SHA-256', data);
+    return Array.from(new Uint8Array(digest)).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+  }
+
+  // ---------------- Auth: accounts & session ----------------
+  function subscribeAccounts(){
+    db.doc('meta/accounts').onSnapshot(function(snap){
+      accounts = (snap.exists && snap.data().accounts) ? snap.data().accounts : [];
+      revalidateSession();
+      renderAuthUI();
+    }, function(err){});
+  }
+
+  function revalidateSession(){
+    if(!currentSession) return;
+    var acc = accounts.find(function(a){ return a.username === currentSession.username; });
+    if(!acc){
+      var wasLoggedIn = !!currentSession;
+      currentSession = null; currentUser = null;
+      try{ localStorage.removeItem('labzaliha_session'); }catch(e){}
+      if(wasLoggedIn) toast('Tvoj nalog više ne postoji ili je izmenjen — prijavi se ponovo.');
+      return;
+    }
+    currentSession = {username:acc.username, displayName:acc.displayName, role:acc.role, superAdmin:!!acc.superAdmin};
+    currentUser = currentSession.displayName;
+    try{ localStorage.setItem('labzaliha_session', JSON.stringify(currentSession)); }catch(e){}
+  }
+
+  function applySessionToUI(){
+    if(currentSession){
+      $('userPillName').textContent = currentSession.displayName;
+      $('userAvatar').textContent = initials(currentSession.displayName);
+    } else {
+      $('userPillName').textContent = 'Ko si?';
+      $('userAvatar').textContent = '?';
+    }
+    var isAdminRole = !!(currentSession && (currentSession.role==='admin' || currentSession.superAdmin));
+    $('addItemBtn').hidden = !isAdminRole;
+    $('invoicePhotoBtn').hidden = !(isAdminRole && sampleImagesAvailable);
+  }
+
+  function renderAuthUI(){
+    applySessionToUI();
+    var authScreen = $('authScreen');
+    if(currentSession){ authScreen.hidden = true; return; }
+    authScreen.hidden = false;
+    var hasAccounts = accounts.length > 0;
+    $('authBootstrap').hidden = hasAccounts;
+    $('authLogin').hidden = !hasAccounts;
+    if(!hasAccounts){ $('bootstrapStatus').textContent = ''; } else { $('loginStatus').textContent = ''; }
+  }
+
+  function onLoginSuccess(session, msg){
+    currentSession = session;
+    currentUser = session.displayName;
+    try{ localStorage.setItem('labzaliha_session', JSON.stringify(session)); }catch(e){}
+    renderAuthUI();
+    renderAll();
+    if(msg) toast(msg);
+  }
+
+  function logout(){
+    currentSession = null;
+    currentUser = null;
+    try{ localStorage.removeItem('labzaliha_session'); }catch(e){}
+    toast('Odjavljen/a.');
+    renderAuthUI();
+  }
+
+  $('bootstrapBtn').addEventListener('click', async function(){
+    var displayName = $('bs_displayName').value.trim();
+    var username = $('bs_username').value.trim().toLowerCase();
+    var pw = $('bs_password').value;
+    var pw2 = $('bs_password2').value;
+    if(!displayName){ $('bootstrapStatus').textContent = 'Unesi ime i prezime.'; return; }
+    if(!username){ $('bootstrapStatus').textContent = 'Unesi korisničko ime.'; return; }
+    if(pw.length < 4){ $('bootstrapStatus').textContent = 'Šifra mora imati bar 4 znaka.'; return; }
+    if(pw !== pw2){ $('bootstrapStatus').textContent = 'Šifre se ne poklapaju.'; return; }
+    if(!db){ $('bootstrapStatus').textContent = 'Nedostupno bez veze sa deljenom bazom.'; return; }
+    $('bootstrapBtn').disabled = true;
+    $('bootstrapStatus').textContent = 'Kreiranje naloga…';
+    try{
+      var salt = randomSaltHex();
+      var hash = await hashPassword(pw, salt);
+      var now = nowIso();
+      await db.doc('meta/accounts').set({accounts:[{
+        username:username, passwordHash:hash, salt:salt, displayName:displayName,
+        role:'admin', superAdmin:true, createdAt: now
+      }]});
+      onLoginSuccess({username:username, displayName:displayName, role:'admin', superAdmin:true}, 'Glavni administratorski nalog kreiran. Dobrodošao/la!');
+    }catch(e){
+      if(e && e.code === 'invalid_argument'){
+        $('bootstrapStatus').textContent = 'Samo vlasnik ove stranice može da postavi glavnog administratora. Sačekaj da to uradi vlasnik, ili zatraži nalog od njega.';
+      } else {
+        $('bootstrapStatus').textContent = 'Greška — pokušaj ponovo.';
+      }
+    }
+    $('bootstrapBtn').disabled = false;
+  });
+  ['bs_displayName','bs_username','bs_password','bs_password2'].forEach(function(id){
+    $(id).addEventListener('keydown', function(e){ if(e.key==='Enter') $('bootstrapBtn').click(); });
+  });
+
+  $('loginBtn').addEventListener('click', async function(){
+    var username = $('li_username').value.trim().toLowerCase();
+    var pw = $('li_password').value;
+    if(!username || !pw){ $('loginStatus').textContent = 'Unesi korisničko ime i šifru.'; return; }
+    if(!db){ $('loginStatus').textContent = 'Nedostupno bez veze sa deljenom bazom.'; return; }
+    $('loginBtn').disabled = true;
+    $('loginStatus').textContent = 'Provera…';
+    try{
+      var acc = accounts.find(function(a){ return a.username === username; });
+      if(!acc){ $('loginStatus').textContent = 'Nalog ne postoji.'; $('loginBtn').disabled=false; return; }
+      var hash = await hashPassword(pw, acc.salt);
+      if(hash !== acc.passwordHash){ $('loginStatus').textContent = 'Pogrešna šifra.'; $('loginBtn').disabled=false; return; }
+      onLoginSuccess({username:acc.username, displayName:acc.displayName, role:acc.role, superAdmin:!!acc.superAdmin}, 'Zdravo, ' + acc.displayName + '.');
+    }catch(e){
+      $('loginStatus').textContent = 'Greška — pokušaj ponovo.';
+    }
+    $('loginBtn').disabled = false;
+  });
+  ['li_username','li_password'].forEach(function(id){
+    $(id).addEventListener('keydown', function(e){ if(e.key==='Enter') $('loginBtn').click(); });
+  });
+
+  $('userPillBtn').addEventListener('click', function(){
+    if(!currentSession){ if(!db) toast('Nedostupno bez veze sa deljenom bazom.'); return; }
+    var roleLabel = currentSession.superAdmin ? 'Glavni administrator' : (currentSession.role==='admin' ? 'Administrator' : 'Korisnik');
+    var body = '<div class="field"><label>Prijavljen/a kao</label><div class="item-name">' + esc(currentSession.displayName) + '</div>' +
+      '<div class="item-meta">' + roleLabel + '</div></div>';
+
+    // Add controlled substances notifications for admins
+    var isAdmin = currentSession.superAdmin || currentSession.role==='admin';
+    if(isAdmin){
+      var controlledNotifications = getControlledSubstanceNotifications();
+      if(controlledNotifications.length > 0){
+        body += '<div style="margin-top:14px; padding:12px; background:var(--danger-soft); border-radius:6px; border-left:4px solid var(--danger);">' +
+          '<div style="font-weight:600; color:var(--danger); margin-bottom:8px;">🔴 Aktivnost kontrolisanih supstanci</div>' +
+          '<div style="font-size:13px; max-height:200px; overflow-y:auto;">';
+        controlledNotifications.slice(0, 5).forEach(function(notif){
+          body += '<div style="margin-bottom:6px; padding-bottom:6px; border-bottom:1px solid rgba(170,57,57,0.2);">' +
+            '<div style="font-weight:500;">' + esc(notif.itemName) + '</div>' +
+            '<div style="font-size:12px; color:var(--ink-muted);">' + esc(notif.action) + ' od ' + esc(notif.by) + '</div>' +
+            '<div style="font-size:12px; color:var(--ink-muted);">🕒 ' + fmtDateTime(notif.ts) + '</div>' +
+          '</div>';
+        });
+        body += '</div>' +
+          (controlledNotifications.length > 5 ? '<div style="font-size:12px; color:var(--ink-muted); margin-top:6px;">… i još ' + (controlledNotifications.length - 5) + '</div>' : '') +
+        '</div>';
+      }
+    }
+
+    body += '<button class="btn btn-ghost" id="sampleDiagBtn" style="width:100%; justify-content:center; margin-top:6px;">🔧 Proveri status AI čitanja slika</button>' +
+      '<button class="btn btn-ghost" id="exportXlsxBtn" style="width:100%; justify-content:center; margin-top:6px;">📊 Preuzmi sve (XLSX)</button>' +
+      '<button class="btn btn-ghost" id="exportMarkdownBtn" style="width:100%; justify-content:center;">📄 Preuzmi sve (Markdown)</button>';
+    var foot = '<button class="btn btn-ghost" id="cancelBtn">Zatvori</button>' +
+      (currentSession.superAdmin ? '<button class="btn" id="manageAccountsBtn">Upravljanje nalozima</button>' : '') +
+      '<button class="btn btn-danger" id="logoutBtn">Odjavi se</button>';
+    openDrawer('Nalog', body, foot);
+    $('cancelBtn').addEventListener('click', closeDrawer);
+    $('logoutBtn').addEventListener('click', function(){ closeDrawer(); logout(); });
+    $('sampleDiagBtn').addEventListener('click', openSampleDiagnosticsDrawer);
+    $('exportXlsxBtn').addEventListener('click', function(){ closeDrawer(); exportToXlsx(); });
+    $('exportMarkdownBtn').addEventListener('click', function(){ closeDrawer(); exportToMarkdown(); });
+    if(currentSession.superAdmin){
+      $('manageAccountsBtn').addEventListener('click', function(){ openAccountManagementDrawer(); });
+    }
+  });
+
+  // ---------------- Account management (super admin only) ----------------
+  function openAccountManagementDrawer(){
+    if(!currentSession || !currentSession.superAdmin) return;
+    renderAccountManagementBody();
+  }
+
+  function renderAccountManagementBody(){
+    var rows = accounts.map(function(a){
+      var roleLabel = a.superAdmin ? 'Glavni admin' : (a.role==='admin' ? 'Administrator' : 'Korisnik');
+      var actions = a.superAdmin ? '' :
+        '<button class="icon-btn" data-action="edit-account" style="width:26px;height:26px;">✎</button>' +
+        '<button class="icon-btn btn-danger" data-action="delete-account" style="width:26px;height:26px;">🗑</button>';
+      return '<div class="line" data-username="' + esc(a.username) + '">' +
+        '<span class="n">' + esc(a.displayName) + ' <span class="item-meta mono">(' + esc(a.username) + ')</span></span>' +
+        '<span class="badge badge-cat">' + roleLabel + '</span>' + actions +
+      '</div>';
+    }).join('') || '<div class="helper-text">Nema još kreiranih naloga.</div>';
+    var body =
+      '<div class="lines-list" id="accountsList">' + rows + '</div>' +
+      '<div class="banner" style="margin:14px 0;">Da bi administratorski nalog zaista mogao da dodaje, uređuje ili briše stavke, moraš mu odvojeno dodeliti dozvolu „može da uređuje“ preko dugmeta za deljenje ove stranice — uloga ovde je samo oznaka unutar aplikacije.</div>' +
+      '<h3 style="margin:18px 0 10px;">Novi nalog</h3>' +
+      '<div class="field"><label for="na_displayName">Ime i prezime</label><input id="na_displayName" type="text"></div>' +
+      '<div class="field"><label for="na_username">Korisničko ime</label><input id="na_username" type="text" autocomplete="off"></div>' +
+      '<div class="field"><label for="na_password">Šifra</label><input id="na_password" type="password" autocomplete="new-password"></div>' +
+      '<div class="field"><label for="na_role">Uloga</label><select id="na_role"><option value="user">Korisnik</option><option value="admin">Administrator</option></select></div>' +
+      '<p class="helper-text" id="accountFormStatus"></p>';
+    openDrawer('Upravljanje nalozima', body,
+      '<button class="btn btn-ghost" id="cancelBtn">Zatvori</button>' +
+      '<button class="btn btn-primary" id="addAccountBtn">Dodaj nalog</button>');
+    $('cancelBtn').addEventListener('click', closeDrawer);
+    $('accountsList').addEventListener('click', function(e){
+      var btn = e.target.closest('button[data-action]');
+      if(!btn) return;
+      var row = e.target.closest('[data-username]');
+      var username = row.getAttribute('data-username');
+      var acc = accounts.find(function(a){ return a.username===username; });
+      if(!acc) return;
+      if(btn.getAttribute('data-action')==='delete-account') confirmDeleteAccount(acc);
+      if(btn.getAttribute('data-action')==='edit-account') openEditAccountDrawer(acc);
+    });
+    $('addAccountBtn').addEventListener('click', async function(){
+      var displayName = $('na_displayName').value.trim();
+      var username = $('na_username').value.trim().toLowerCase();
+      var pw = $('na_password').value;
+      var role = $('na_role').value;
+      if(!displayName || !username || pw.length<4){ $('accountFormStatus').textContent = 'Popuni ime, korisničko ime i šifru (bar 4 znaka).'; return; }
+      if(accounts.some(function(a){ return a.username===username; })){ $('accountFormStatus').textContent = 'Korisničko ime već postoji.'; return; }
+      $('addAccountBtn').disabled = true;
+      try{
+        var salt = randomSaltHex();
+        var hash = await hashPassword(pw, salt);
+        var newAccounts = accounts.concat([{username:username, passwordHash:hash, salt:salt, displayName:displayName, role:role, superAdmin:false, createdAt:nowIso()}]);
+        await db.doc('meta/accounts').update({accounts:newAccounts});
+        toast('Nalog kreiran.');
+        renderAccountManagementBody();
+      }catch(e){
+        $('accountFormStatus').textContent = 'Greška pri čuvanju — probaj ponovo.';
+      }
+      $('addAccountBtn').disabled = false;
+    });
+  }
+
+  function confirmDeleteAccount(acc){
+    openDrawer('Obriši nalog',
+      '<p>Obrisati nalog <b>' + esc(acc.displayName) + '</b> ("' + esc(acc.username) + '")? Osoba više neće moći da se prijavi.</p>',
+      '<button class="btn btn-ghost" id="cancelBtn">Otkaži</button>' +
+      '<button class="btn btn-primary btn-danger" id="confirmBtn" style="border-color:var(--danger); background:var(--danger-soft);">Obriši</button>');
+    $('cancelBtn').addEventListener('click', function(){ renderAccountManagementBody(); });
+    $('confirmBtn').addEventListener('click', async function(){
+      try{
+        var newAccounts = accounts.filter(function(a){ return a.username!==acc.username; });
+        await db.doc('meta/accounts').update({accounts:newAccounts});
+        toast('Nalog obrisan.');
+        renderAccountManagementBody();
+      }catch(e){ toast('Greška pri brisanju.'); }
+    });
+  }
+
+  function openEditAccountDrawer(acc){
+    var body =
+      '<div class="field"><label for="ea_displayName">Ime i prezime</label><input id="ea_displayName" type="text" value="' + esc(acc.displayName) + '"></div>' +
+      '<div class="field"><label for="ea_role">Uloga</label><select id="ea_role">' +
+        '<option value="user"' + (acc.role==='user'?' selected':'') + '>Korisnik</option>' +
+        '<option value="admin"' + (acc.role==='admin'?' selected':'') + '>Administrator</option>' +
+      '</select></div>' +
+      '<div class="field"><label for="ea_password">Nova šifra (ostavi prazno da ne menjaš)</label><input id="ea_password" type="password" autocomplete="new-password"></div>' +
+      '<p class="helper-text" id="editAccountStatus"></p>';
+    openDrawer('Uredi nalog: ' + acc.displayName, body,
+      '<button class="btn btn-ghost" id="cancelBtn">Otkaži</button>' +
+      '<button class="btn btn-primary" id="saveEditBtn">Sačuvaj</button>');
+    $('cancelBtn').addEventListener('click', function(){ renderAccountManagementBody(); });
+    $('saveEditBtn').addEventListener('click', async function(){
+      var displayName = $('ea_displayName').value.trim();
+      var role = $('ea_role').value;
+      var pw = $('ea_password').value;
+      if(!displayName){ $('editAccountStatus').textContent = 'Unesi ime.'; return; }
+      $('saveEditBtn').disabled = true;
+      try{
+        var updated = Object.assign({}, acc, {displayName:displayName, role:role});
+        if(pw){
+          if(pw.length<4){ $('editAccountStatus').textContent = 'Šifra mora imati bar 4 znaka.'; $('saveEditBtn').disabled=false; return; }
+          var salt = randomSaltHex();
+          updated.passwordHash = await hashPassword(pw, salt);
+          updated.salt = salt;
+        }
+        var newAccounts = accounts.map(function(a){ return a.username===acc.username ? updated : a; });
+        await db.doc('meta/accounts').update({accounts:newAccounts});
+        toast('Nalog izmenjen.');
+        renderAccountManagementBody();
+      }catch(e){ $('editAccountStatus').textContent = 'Greška pri čuvanju.'; }
+      $('saveEditBtn').disabled = false;
+    });
+  }
+
+  function requireUser(){
+    if(!currentSession){ toast('Prijavi se da bi nastavio/la.'); return false; }
+    if(!db){ toast('Nedostupno bez veze sa deljenom bazom.'); return false; }
+    return true;
+  }
+
+  // ---------------- Tabs ----------------
+  document.querySelectorAll('.tab').forEach(function(t){
+    t.addEventListener('click', function(){
+      activeTab = t.getAttribute('data-tab');
+      document.querySelectorAll('.tab').forEach(function(x){ x.classList.toggle('active', x===t); });
+      $('panel-inventar').hidden = activeTab !== 'inventar';
+      $('panel-protokoli').hidden = activeTab !== 'protokoli';
+      $('panel-aktivnost').hidden = activeTab !== 'aktivnost';
+      if(activeTab === 'aktivnost') renderActivity();
+    });
+  });
+
+  // ---------------- Filters ----------------
+  $('searchInput').addEventListener('input', function(e){ searchQuery = e.target.value.trim().toLowerCase(); renderTable(); });
+  $('categoryToggle').addEventListener('click', function(e){
+    var btn = e.target.closest('button[data-cat]');
+    if(!btn) return;
+    filterCategory = btn.getAttribute('data-cat');
+    document.querySelectorAll('#categoryToggle button').forEach(function(b){ b.classList.toggle('active', b===btn); });
+    renderTable();
+  });
+  $('sortSelect').addEventListener('change', function(e){ sortMode = e.target.value; renderTable(); });
+
+  // ---------------- Render: alert strip ----------------
+  function renderAlertStrip(){
+    var items = mergedItemsArray();
+    var low = items.filter(isLow);
+    var expired = items.filter(function(i){ return expiryStatus(i)==='expired'; });
+    var soon = items.filter(function(i){ return expiryStatus(i)==='soon'; });
+    var strip = $('alertStrip');
+    strip.innerHTML = '';
+    if(low.length===0 && expired.length===0 && soon.length===0){ strip.hidden = true; return; }
+    strip.hidden = false;
+    function chip(key, label, count, cls){
+      if(count===0) return;
+      var b = document.createElement('button');
+      b.className = 'chip chip-btn ' + cls + (filterAlert===key ? ' active' : '');
+      b.innerHTML = '<span class="dot"></span>' + label + ' (' + count + ')';
+      b.addEventListener('click', function(){ filterAlert = filterAlert===key ? null : key; renderAlertStrip(); renderTable(); });
+      strip.appendChild(b);
+    }
+    chip('low', 'Niska zaliha', low.length, 'chip-warn');
+    chip('expired', 'Rok istekao', expired.length, 'chip-danger');
+    chip('soon', 'Rok ističe uskoro', soon.length, 'chip-warn');
+    if(filterAlert){
+      var reset = document.createElement('button');
+      reset.className = 'chip chip-reset chip-btn';
+      reset.textContent = 'Prikaži sve';
+      reset.addEventListener('click', function(){ filterAlert=null; renderAlertStrip(); renderTable(); });
+      strip.appendChild(reset);
+    }
+  }
+
+  // ---------------- Render: table ----------------
+  function filteredItems(){
+    var items = mergedItemsArray();
+    if(filterCategory !== 'sve') items = items.filter(function(i){ return i.category===filterCategory; });
+    if(filterAlert === 'low') items = items.filter(isLow);
+    if(filterAlert === 'expired') items = items.filter(function(i){ return expiryStatus(i)==='expired'; });
+    if(filterAlert === 'soon') items = items.filter(function(i){ return expiryStatus(i)==='soon'; });
+    if(searchQuery){
+      items = items.filter(function(i){
+        return [i.name,i.casNumber,i.lotNumber,i.room,i.location,i.barcode].some(function(v){
+          return v && String(v).toLowerCase().indexOf(searchQuery) !== -1;
+        });
+      });
+    }
+    items.sort(function(a,b){
+      if(sortMode==='qty') return (a.quantity||0)-(b.quantity||0);
+      if(sortMode==='expiry'){
+        var da = a.expiryDate ? a.expiryDate : '9999-99-99';
+        var db_ = b.expiryDate ? b.expiryDate : '9999-99-99';
+        return da.localeCompare(db_);
+      }
+      return (a.name||'').localeCompare(b.name||'', 'sr');
+    });
+    return items;
+  }
+
+  function renderTable(){
+    var tbody = $('itemsBody');
+    var items = filteredItems();
+    $('resultCount').textContent = items.length + ' od ' + itemsById.size + ' stavki';
+    if(itemsById.size === 0){
+      tbody.innerHTML = '<tr><td colspan="7"><div class="empty-state"><div class="big">🧪</div>Inventar je prazan.<br>Dodaj prvu stavku dugmetom „+ Nova stavka“.</div></td></tr>';
+      return;
+    }
+    if(items.length === 0){
+      tbody.innerHTML = '<tr><td colspan="7"><div class="empty-state">Nema stavki koje odgovaraju filteru.</div></td></tr>';
+      return;
+    }
+    tbody.innerHTML = items.map(function(item){
+      var low = isLow(item);
+      var es = expiryStatus(item);
+      var badges = '';
+      if(low) badges += '<span class="badge badge-warn">NISKA ZALIHA</span> ';
+      if(es==='expired') badges += '<span class="badge badge-danger">ROK ISTEKAO</span> ';
+      else if(es==='soon') badges += '<span class="badge badge-warn">ROK USKORO</span> ';
+      var subMeta = [];
+      if(item.casNumber) subMeta.push('CAS ' + esc(item.casNumber));
+      if(item.lotNumber) subMeta.push('LOT ' + esc(item.lotNumber));
+      if(item.barcode) subMeta.push('BAR ' + esc(item.barcode));
+      var controlledIndicator = item.isControlled ? '<span style="color:var(--danger); font-weight:bold; margin-right:6px;">🔴</span>' : '';
+      return (
+        '<tr data-id="' + item.id + '">' +
+          '<td><div class="item-name">' + controlledIndicator + esc(item.name) + '</div>' +
+            (subMeta.length ? '<div class="item-meta mono">' + subMeta.join(' · ') + '</div>' : '') +
+            (item.notes ? '<div class="item-meta">' + esc(item.notes) + '</div>' : '') +
+          '</td>' +
+          '<td><span class="badge badge-cat">' + categoryLabel(item.category) + '</span></td>' +
+          '<td class="qty-cell"><span class="qty-value mono">' + fmtQty(item.quantity) + '</span> <span class="mono">' + esc(item.unit||'') + '</span>' +
+            (item.minQuantity ? '<div class="item-meta mono">min ' + fmtQty(item.minQuantity) + ' ' + esc(item.unit||'') + '</div>' : '') +
+            (badges ? '<div>' + badges + '</div>' : '') +
+          '</td>' +
+          '<td>' + (item.room ? esc(item.room) : '<span class="item-meta">bez prostorije</span>') +
+            (item.location ? '<div class="item-meta">' + esc(item.location) + '</div>' : '') + '</td>' +
+          '<td class="mono">' + fmtDate(item.expiryDate) + '</td>' +
+          '<td><div class="item-meta">' + esc(item.updatedBy||'—') + '</div><div class="item-meta">' + fmtDateTime(item.updatedAt) + '</div></td>' +
+          '<td><div class="row-actions">' +
+            '<button class="icon-btn" data-action="adjust" title="Promeni količinu (svi članovi)">±</button>' +
+            '<button class="icon-btn" data-action="edit" title="Uredi (samo administratori)">✎</button>' +
+            (item.isControlled ? '<button class="icon-btn btn-danger" disabled title="Kontrolisana supstanca: brisanje zablokirano">🗑</button>' : '<button class="icon-btn btn-danger" data-action="delete" title="Obriši (samo administratori)">🗑</button>') +
+          '</div></td>' +
+        '</tr>'
+      );
+    }).join('');
+  }
+
+  $('itemsBody').addEventListener('click', function(e){
+    var btn = e.target.closest('button[data-action]');
+    if(!btn) return;
+    var tr = e.target.closest('tr[data-id]');
+    if(!tr) return;
+    var item = mergedItem(tr.getAttribute('data-id'));
+    if(!item) return;
+    var action = btn.getAttribute('data-action');
+    if(action==='adjust') openAdjustDrawer(item);
+    if(action==='edit') openEditDrawer(item);
+    if(action==='delete') openDeleteConfirm(item);
+  });
+
+  function renderTabCounts(){
+    $('countInventar').textContent = itemsById.size ? '(' + itemsById.size + ')' : '';
+    $('countProtokoli').textContent = protocols.length ? '(' + protocols.length + ')' : '';
+  }
+
+  // ---------------- Drawer core ----------------
+  function openDrawer(title, bodyHtml, footHtml){
+    $('drawerTitle').textContent = title;
+    $('drawerBody').innerHTML = bodyHtml;
+    $('drawerFoot').innerHTML = footHtml || '';
+    $('overlay').classList.add('show');
+    $('drawer').classList.add('open');
+  }
+  function stopCameraScan(){
+    if(activeCameraStream){
+      activeCameraStream.getTracks().forEach(function(t){ t.stop(); });
+      activeCameraStream = null;
+    }
+  }
+  function closeDrawer(){
+    stopCameraScan();
+    $('overlay').classList.remove('show');
+    $('drawer').classList.remove('open');
+  }
+  $('drawerCloseBtn').addEventListener('click', closeDrawer);
+  $('overlay').addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeDrawer(); });
+
+  // ---------------- Add / Edit item ----------------
+  function itemFormHtml(item, showLabelHelperBox){
+    item = item || {};
+    var labelHelper = showLabelHelperBox ?
+      '<div class="field label-photo-box">' +
+        '<label>Popuni sa slike etikete (opciono)</label>' +
+        '<input id="f_labelFile" type="file" accept="image/*">' +
+        '<button type="button" class="btn" id="readLabelBtn" style="margin-top:8px;">📷 Pročitaj etiketu</button>' +
+        '<div class="helper-text" id="labelStatus"></div>' +
+      '</div>' : '';
+    return (
+      labelHelper +
+      '<div class="field"><label>Naziv *</label><input id="f_name" type="text" value="' + esc(item.name||'') + '" placeholder="npr. Etanol 96%"></div>' +
+      '<div class="field-row">' +
+        '<div class="field"><label>Kategorija *</label><select id="f_category">' +
+          '<option value="hemikalija"' + (item.category==='hemikalija'?' selected':'') + '>Hemikalija</option>' +
+          '<option value="potrosni"' + (item.category==='potrosni'?' selected':'') + '>Potrošni materijal</option>' +
+        '</select></div>' +
+        '<div class="field"><label>CAS broj</label><input id="f_cas" type="text" value="' + esc(item.casNumber||'') + '" placeholder="npr. 64-17-5"></div>' +
+      '</div>' +
+      '<div class="field-row">' +
+        '<div class="field"><label>Količina *</label><input id="f_qty" type="number" step="any" min="0" value="' + (item.quantity!=null?item.quantity:'') + '"></div>' +
+        '<div class="field"><label>Jedinica mere *</label><input id="f_unit" list="unitList" type="text" value="' + esc(item.unit||'') + '" placeholder="mL, g, kom…"></div>' +
+      '</div>' +
+      '<datalist id="unitList"><option value="mL"><option value="L"><option value="g"><option value="kg"><option value="kom"><option value="kutija"><option value="pak"></datalist>' +
+      '<div class="field-row">' +
+        '<div class="field"><label>Minimalna zaliha (upozorenje)</label><input id="f_min" type="number" step="any" min="0" value="' + (item.minQuantity!=null?item.minQuantity:'') + '"></div>' +
+        '<div class="field"><label>Bar kod</label><input id="f_barcode" type="text" value="' + esc(item.barcode||'') + '" placeholder="fokusiraj i skeniraj, ili ukucaj"></div>' +
+      '</div>' +
+      '<div class="field-row">' +
+        '<div class="field"><label>Prostorija *</label><input id="f_room" type="text" value="' + esc(item.room||'') + '" placeholder="npr. Soba 214"></div>' +
+        '<div class="field"><label>Mesto u prostoriji</label><input id="f_loc" type="text" value="' + esc(item.location||'') + '" placeholder="npr. Ormar A2, polica 3"></div>' +
+      '</div>' +
+      '<div class="field-row">' +
+        '<div class="field"><label>Lot broj</label><input id="f_lot" type="text" value="' + esc(item.lotNumber||'') + '"></div>' +
+        '<div class="field"><label>Rok trajanja</label><input id="f_exp" type="date" value="' + esc(item.expiryDate||'') + '"></div>' +
+      '</div>' +
+      '<div class="field"><label>Napomena</label><textarea id="f_notes" rows="2">' + esc(item.notes||'') + '</textarea></div>' +
+      '<div class="field" style="display:flex; align-items:center; gap:8px; margin-top:12px; padding:10px; background:var(--warn-soft); border-radius:6px;">' +
+        '<input id="f_controlled" type="checkbox"' + (item.isControlled ? ' checked' : '') + ' style="width:18px; height:18px; cursor:pointer;">' +
+        '<label style="cursor:pointer; flex:1; margin:0;">Kontrolisana supstanca</label>' +
+      '</div>'
+    );
+  }
+
+  function readItemForm(){
+    var name = $('f_name').value.trim();
+    var unit = $('f_unit').value.trim();
+    var qty = parseFloat($('f_qty').value);
+    var room = $('f_room').value.trim();
+    if(!name){ toast('Unesi naziv stavke.'); return null; }
+    if(!unit){ toast('Unesi jedinicu mere.'); return null; }
+    if(isNaN(qty) || qty<0){ toast('Unesi ispravnu količinu.'); return null; }
+    if(!room){ toast('Unesi prostoriju u kojoj se stavka nalazi.'); return null; }
+    return {
+      name: name,
+      category: $('f_category').value,
+      casNumber: $('f_cas').value.trim(),
+      unit: unit,
+      quantity: qty,
+      minQuantity: parseFloat($('f_min').value) || 0,
+      barcode: $('f_barcode').value.trim(),
+      lotNumber: $('f_lot').value.trim(),
+      room: room,
+      location: $('f_loc').value.trim(),
+      expiryDate: $('f_exp').value || '',
+      notes: $('f_notes').value.trim(),
+      isControlled: $('f_controlled').checked || false
+    };
+  }
+
+  async function saveNewItem(data){
+    var now = nowIso();
+    try{
+      var ref = await db.collection('items').add({
+        name:data.name, category:data.category, casNumber:data.casNumber, unit:data.unit,
+        minQuantity:data.minQuantity, barcode:data.barcode||'', lotNumber:data.lotNumber,
+        room:data.room||'', location:data.location, expiryDate:data.expiryDate, notes:data.notes,
+        isControlled: data.isControlled || false,
+        createdAt: now, createdBy: currentUser
+      });
+      await db.doc('stock/' + ref.id).set({
+        quantity: data.quantity, updatedAt: now, updatedBy: currentUser,
+        history: [{ts:now, type:'create', delta:data.quantity, resultQty:data.quantity, by:currentUser, note:'Kreirana stavka'}]
+      });
+      return true;
+    }catch(e){ handleWriteError(e); return false; }
+  }
+
+  function wireLabelPhotoButton(){
+    var btn = $('readLabelBtn');
+    if(!btn) return;
+    btn.addEventListener('click', async function(){
+      var fileInput = $('f_labelFile');
+      if(!fileInput.files || !fileInput.files.length){ toast('Izaberi sliku etikete.'); return; }
+      if(!sampleFn){ toast('AI čitanje trenutno nije dostupno.'); return; }
+      btn.disabled = true;
+      $('labelStatus').textContent = 'Claude čita etiketu…';
+      try{
+        var prompt = 'Ovo je slika nalepnice/etikete sa bočice ili pakovanja laboratorijske hemikalije ili potrošnog materijala. ' +
+          'Pročitaj i vrati isključivo jedan JSON objekat sa poljima: "name" (naziv proizvoda), ' +
+          '"casNumber" (CAS broj ako postoji na etiketi, inače prazan string), ' +
+          '"unit" (osnovna jedinica mere pakovanja kao što piše, npr. mL, g, kom), ' +
+          '"lotNumber" (broj lota/šarže ako postoji, inače prazan string), ' +
+          '"category" ("hemikalija" ili "potrosni" — najbolja procena). Ako ne možeš pouzdano da pročitaš neko polje, vrati prazan string za njega.';
+        var r = await sampleFn.json(prompt, {images: fileInput.files[0], modelTier:'default'});
+        if(r && typeof r === 'object'){
+          if(r.name) $('f_name').value = String(r.name).slice(0,200);
+          if(r.casNumber) $('f_cas').value = String(r.casNumber).slice(0,60);
+          if(r.unit) $('f_unit').value = String(r.unit).slice(0,20);
+          if(r.lotNumber) $('f_lot').value = String(r.lotNumber).slice(0,60);
+          if(r.category==='potrosni' || r.category==='hemikalija') $('f_category').value = r.category;
+          $('labelStatus').textContent = 'Popunjeno sa etikete — proveri i dopuni ostalo (količina, prostorija, rok).';
+        } else {
+          $('labelStatus').textContent = 'Nisam uspeo da pročitam etiketu — popuni ručno.';
+        }
+      }catch(e){
+        $('labelStatus').textContent = invoiceErrorMessage(e) || 'Nešto nije uspelo — popuni ručno.';
+      }
+      btn.disabled = false;
+    });
+  }
+
+  async function checkSampleImagesAvailable(){
+    // Re-checked fresh on every open (cheap, local, no usage spent) instead of
+    // relying only on the one-time result from initSample(), which can still
+    // be in flight the first time someone opens this drawer right after load.
+    if(!sampleFn && window.claude && window.claude.use){
+      try{ sampleFn = await window.claude.use('sample'); }catch(e){ sampleFn = null; }
+    }
+    if(!sampleFn) return false;
+    try{
+      var limits = await sampleFn.limits();
+      sampleImagesAvailable = !!(limits && limits.images);
+    }catch(e){ sampleImagesAvailable = false; }
+    return sampleImagesAvailable;
+  }
+
+  async function openAddDrawer(prefill){
+    if(!requireUser()) return;
+    var showLabelHelper = await checkSampleImagesAvailable();
+    openDrawer('Nova stavka', itemFormHtml(prefill||{}, showLabelHelper),
+      '<button class="btn btn-ghost" id="cancelBtn">Otkaži</button>' +
+      '<button class="btn btn-primary" id="saveBtn">Sačuvaj stavku</button>');
+    if(showLabelHelper) wireLabelPhotoButton();
+    $('cancelBtn').addEventListener('click', closeDrawer);
+    $('saveBtn').addEventListener('click', async function(){
+      var data = readItemForm();
+      if(!data) return;
+      $('saveBtn').disabled = true;
+      var ok = await saveNewItem(data);
+      $('saveBtn').disabled = false;
+      if(ok){ closeDrawer(); toast('Stavka dodata.'); }
+    });
+  }
+  $('addItemBtn').addEventListener('click', function(){ openAddDrawer(); });
+
+  function openEditDrawer(item){
+    if(!requireUser()) return;
+    openDrawer('Uredi: ' + item.name, itemFormHtml(item, false),
+      '<button class="btn btn-ghost" id="cancelBtn">Otkaži</button>' +
+      '<button class="btn btn-primary" id="saveBtn">Sačuvaj izmene</button>');
+    $('cancelBtn').addEventListener('click', closeDrawer);
+    $('saveBtn').addEventListener('click', async function(){
+      var data = readItemForm();
+      if(!data) return;
+      $('saveBtn').disabled = true;
+      var now = nowIso();
+      try{
+        await db.doc('items/' + item.id).update({
+          name:data.name, category:data.category, casNumber:data.casNumber, unit:data.unit,
+          minQuantity:data.minQuantity, barcode:data.barcode||'', lotNumber:data.lotNumber,
+          room:data.room||'', location:data.location, expiryDate:data.expiryDate, notes:data.notes,
+          isControlled: data.isControlled || false
+        });
+        var delta = data.quantity - Number(item.quantity||0);
+        var entry = { ts: now, type: delta !== 0 ? 'adjust' : 'edit', delta: delta, resultQty: data.quantity, by: currentUser, note: 'Izmenjeni podaci o stavci' };
+        var history = (item.history||[]).concat([entry]).slice(-30);
+        await db.doc('stock/' + item.id).update({quantity:data.quantity, updatedAt:now, updatedBy:currentUser, history:history})
+          .catch(function(){ return db.doc('stock/' + item.id).set({quantity:data.quantity, updatedAt:now, updatedBy:currentUser, history:[entry]}); });
+        closeDrawer();
+        toast('Izmene sačuvane.');
+      }catch(e){ handleWriteError(e); }
+      $('saveBtn').disabled = false;
+    });
+  }
+
+  // ---------------- Adjust quantity (open to everyone) ----------------
+  function openAdjustDrawer(item){
+    if(!requireUser()) return;
+
+    // If controlled substance, show warning first
+    if(item.isControlled){
+      openDrawer('⚠️ Kontrolisana supstanca',
+        '<p style="margin-top:0; color:var(--danger); font-weight:500;">Ovo je dragocena ili retka supstanca.</p>' +
+        '<p>Sveintenzno bilješke o svim troškima/prihodom su zabilježene u sistemu.</p>' +
+        '<p style="margin-bottom:0;">Nastavi sa posebnim pažnjom?</p>',
+        '<button class="btn btn-ghost" id="cancelBtn">Otkaži</button>' +
+        '<button class="btn btn-primary" id="proceedBtn" style="background:var(--danger-soft); border-color:var(--danger); color:var(--danger);">Nastavi sa pažnjom</button>');
+      $('cancelBtn').addEventListener('click', closeDrawer);
+      $('proceedBtn').addEventListener('click', function(){
+        closeDrawer();
+        openAdjustDrawerForm(item);
+      });
+      return;
+    }
+
+    openAdjustDrawerForm(item);
+  }
+
+  function openAdjustDrawerForm(item){
+    var mode = 'add';
+    var body =
+      '<div class="field"><label>Stavka</label><div class="item-name">' + (item.isControlled ? '🔴 ' : '') + esc(item.name) + '</div>' +
+        '<div class="item-meta mono">Trenutno: ' + fmtQty(item.quantity) + ' ' + esc(item.unit||'') + '</div></div>' +
+      '<div class="field"><label>Tip promene</label>' +
+        '<div class="radio-row" id="modeRow">' +
+          '<div class="radio-opt active" data-mode="add">Dodaj zalihu</div>' +
+          '<div class="radio-opt" data-mode="consume">Utroši</div>' +
+          '<div class="radio-opt" data-mode="set">Postavi tačno</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="field"><label id="qtyLabel">Količina za dodavanje (' + esc(item.unit||'') + ')</label><input id="f_amount" type="number" step="any" min="0" placeholder="0"></div>' +
+      '<div class="field"><label>Napomena</label><input id="f_note" type="text" placeholder="npr. nova nabavka, poručeno od…"></div>';
+    openDrawer('Promeni količinu', body,
+      '<button class="btn btn-ghost" id="cancelBtn">Otkaži</button>' +
+      '<button class="btn btn-primary" id="saveBtn">Sačuvaj</button>');
+    $('modeRow').addEventListener('click', function(e){
+      var opt = e.target.closest('.radio-opt');
+      if(!opt) return;
+      mode = opt.getAttribute('data-mode');
+      document.querySelectorAll('#modeRow .radio-opt').forEach(function(o){ o.classList.toggle('active', o===opt); });
+      var label = mode==='add' ? 'Količina za dodavanje (' : mode==='consume' ? 'Količina za trošenje (' : 'Nova tačna količina (';
+      $('qtyLabel').textContent = label + (item.unit||'') + ')';
+    });
+    $('cancelBtn').addEventListener('click', closeDrawer);
+    $('saveBtn').addEventListener('click', async function(){
+      var amt = parseFloat($('f_amount').value);
+      if(isNaN(amt) || amt<0){ toast('Unesi ispravnu vrednost.'); return; }
+      var current = Number(item.quantity||0);
+      var newQty, delta, type;
+      if(mode==='add'){ delta = amt; newQty = current+amt; type='add'; }
+      else if(mode==='consume'){ delta = -amt; newQty = Math.max(0, current-amt); type='consume'; }
+      else { newQty = amt; delta = amt-current; type='adjust'; }
+      newQty = Math.round(newQty*100)/100;
+      var now = nowIso();
+      var icon = item.isControlled ? '🔴' : '';
+      var entry = {ts:now, type:type, delta:delta, resultQty:newQty, by:currentUser, note:(icon ? icon + ' ' : '') + $('f_note').value.trim()};
+      var history = (item.history||[]).concat([entry]).slice(-30);
+      $('saveBtn').disabled = true;
+      try{
+        await db.doc('stock/' + item.id).update({quantity:newQty, updatedAt:now, updatedBy:currentUser, history:history});
+        closeDrawer();
+        toast('Zaliha ažurirana.');
+      }catch(e){ handleWriteError(e); }
+      $('saveBtn').disabled = false;
+    });
+  }
+
+  // ---------------- Delete item ----------------
+  function openDeleteConfirm(item){
+    if(!requireUser()) return;
+
+    // Prevent deletion of controlled substances
+    if(item.isControlled){
+      openDrawer('⛔ Brisanje zabranjeno',
+        '<p style="margin-top:0; color:var(--danger); font-weight:700;">Ova stavka je označena kao <b>kontrolisana supstanca</b> (dragocena, retka ili skupo).</p>' +
+        '<p>Brisanje kontrolisanih supstanci je zabranjeno iz sigurnosnih i revizijskih razloga.</p>' +
+        '<p style="margin-bottom:0;">Ako je potrebno, kontaktiraj administratora.</p>',
+        '<button class="btn btn-primary" id="closeBtn">Razumem</button>');
+      $('closeBtn').addEventListener('click', closeDrawer);
+      return;
+    }
+
+    openDrawer('Obriši stavku',
+      '<p>Da li sigurno želiš da obrišeš <b>' + esc(item.name) + '</b> iz inventara? Ova akcija se ne može poništiti.</p>',
+      '<button class="btn btn-ghost" id="cancelBtn">Otkaži</button>' +
+      '<button class="btn btn-primary btn-danger" id="confirmDeleteBtn" style="border-color:var(--danger); background:var(--danger-soft);">Obriši</button>');
+    $('cancelBtn').addEventListener('click', closeDrawer);
+    $('confirmDeleteBtn').addEventListener('click', async function(){
+      try{
+        await db.doc('items/' + item.id).delete();
+        try{ await db.doc('stock/' + item.id).delete(); }catch(e2){}
+        closeDrawer();
+        toast('Stavka obrisana.');
+      }catch(e){ handleWriteError(e); }
+    });
+  }
+
+  // ---------------- Barcode quick scan (open to everyone) ----------------
+  function openScanDrawer(){
+    var body =
+      '<div class="field"><label>Skeniraj ili unesi bar kod</label><input id="f_scan" type="text" autocomplete="off" placeholder="Fokusiraj i skeniraj, ili otkucaj i pritisni Enter"></div>' +
+      (hasBarcodeDetector ?
+        '<button type="button" class="btn" id="cameraScanBtn" style="margin-bottom:12px;">📷 Skeniraj kamerom</button>' +
+        '<div id="cameraWrap" hidden>' +
+          '<video id="scanVideo" autoplay playsinline muted class="camera-video"></video>' +
+          '<button type="button" class="btn btn-ghost" id="stopCameraBtn" style="margin-top:8px;">Zaustavi kameru</button>' +
+        '</div>'
+        : '<p class="helper-text">Skeniranje kamerom nije podržano u ovom pregledaču na ovom uređaju — koristi fizički čitač, spoljnu aplikaciju za skeniranje uz kopiranje koda, ili unesi ručno.</p>') +
+      '<div id="scanResult"></div>' +
+      '<p class="helper-text">Napomena: skeniranje traži postojeću stavku po bar kodu koji je ranije unet — sam kod ne nosi ime, CAS broj ni količinu.</p>';
+    openDrawer('Skeniranje bar koda', body, '<button class="btn btn-ghost" id="cancelBtn">Zatvori</button>');
+    $('cancelBtn').addEventListener('click', closeDrawer);
+    var input = $('f_scan');
+    setTimeout(function(){ input.focus(); }, 50);
+
+    function handleScannedCode(code){
+      code = (code||'').trim();
+      if(!code) return;
+      var found = mergedItemsArray().find(function(i){ return i.barcode && i.barcode.trim() === code; });
+      if(found){
+        closeDrawer();
+        openAdjustDrawer(found);
+      } else {
+        stopCameraScan();
+        if($('cameraWrap')) $('cameraWrap').hidden = true;
+        $('scanResult').innerHTML =
+          '<p class="helper-text">Bar kod „' + esc(code) + '“ nije pronađen u inventaru.</p>' +
+          '<button class="btn" id="registerBarcodeBtn">Registruj kao novu stavku 🔒</button>';
+        $('registerBarcodeBtn').addEventListener('click', function(){
+          closeDrawer();
+          openAddDrawer({barcode: code});
+        });
+      }
+    }
+
+    input.addEventListener('keydown', function(e){
+      if(e.key !== 'Enter') return;
+      e.preventDefault();
+      handleScannedCode(input.value);
+    });
+
+    if(hasBarcodeDetector){
+      $('cameraScanBtn').addEventListener('click', async function(){
+        $('cameraWrap').hidden = false;
+        try{
+          activeCameraStream = await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}});
+          var video = $('scanVideo');
+          video.srcObject = activeCameraStream;
+          var detector = new window.BarcodeDetector();
+          var scanning = true;
+          $('stopCameraBtn').addEventListener('click', function(){
+            scanning = false;
+            stopCameraScan();
+            $('cameraWrap').hidden = true;
+          });
+          (function loop(){
+            if(!scanning) return;
+            detector.detect(video).then(function(codes){
+              if(!scanning) return;
+              if(codes && codes.length){
+                scanning = false;
+                var value = codes[0].rawValue;
+                input.value = value;
+                handleScannedCode(value);
+              } else {
+                requestAnimationFrame(loop);
+              }
+            }).catch(function(){ if(scanning) requestAnimationFrame(loop); });
+          })();
+        }catch(e){
+          $('cameraWrap').hidden = true;
+          toast('Kamera nije dostupna (dozvola odbijena ili nepodržano na ovom uređaju). Koristi tastaturu ili nalepi kod.');
+        }
+      });
+    }
+  }
+  $('scanBarcodeBtn').addEventListener('click', openScanDrawer);
+
+  // ---------------- Photo-of-invoice AI assist (admin write, everyone can try) ----------------
+  function invoiceErrorMessage(e){
+    if(!e || !e.code) return 'Nešto nije uspelo. Pokušaj ponovo ili unesi ručno.';
+    switch(e.code){
+      case 'not_granted': return 'Nisi dozvolio/la Claude-u pristup na ovoj stranici, pa AI čitanje nije dostupno.';
+      case 'images_unavailable': return 'Slanje slika nije podržano u ovom prikazu.';
+      case 'image_rejected': return 'Slika nije prihvaćena (tip ili veličina) — probaj drugu sliku.';
+      case 'rate_limited': return 'Previše zahteva u kratkom roku — sačekaj i probaj ponovo.';
+      case 'invalid_json': return 'Nisam uspeo da pročitam stavke sa slike — probaj jasniju sliku.';
+      case 'prompt_too_large': return 'Slika je prevelika za obradu.';
+      case 'cancelled': return '';
+      default: return 'Nešto nije uspelo. Pokušaj ponovo ili unesi ručno.';
+    }
+  }
+
+  function openInvoiceDrawer(){
+    if(!requireUser()) return;
+    if(!sampleFn){ toast('AI čitanje računa trenutno nije dostupno u ovom prikazu.'); return; }
+    var body =
+      '<div class="field"><label>Slika računa ili otpremnice</label><input id="f_invoiceFile" type="file" accept="image/*"></div>' +
+      '<p class="helper-text">Claude će pročitati sliku i predložiti stavke — ništa se ne čuva dok ne pregledaš i potvrdiš. Čuvanje stavki je ipak rezervisano za administratore.</p>' +
+      '<div class="field"><label>Prostorija za ove stavke *</label><input id="f_invoiceRoom" type="text" placeholder="npr. Soba 214"></div>' +
+      '<div id="invoiceStatus" style="margin-top:12px;"></div>' +
+      '<div id="invoiceRows"></div>';
+    openDrawer('Dodavanje sa slike računa', body,
+      '<button class="btn btn-ghost" id="cancelBtn">Zatvori</button>' +
+      '<button class="btn btn-primary" id="readBtn">Pročitaj sliku</button>');
+    $('cancelBtn').addEventListener('click', closeDrawer);
+
+    var extractedLines = [];
+
+    function onRowInput(e){
+      var idx = e.target.getAttribute('data-idx');
+      var f = e.target.getAttribute('data-f');
+      if(idx==null || !f) return;
+      idx = parseInt(idx,10);
+      if(f==='selected') extractedLines[idx].selected = e.target.checked;
+      else if(f==='quantity') extractedLines[idx].quantity = parseFloat(e.target.value)||0;
+      else extractedLines[idx][f] = e.target.value;
+    }
+
+    function renderInvoiceRows(){
+      var wrap = $('invoiceRows');
+      if(extractedLines.length===0){ wrap.innerHTML=''; return; }
+      wrap.innerHTML = extractedLines.map(function(l, idx){
+        return '<div class="line invoice-row-inputs" style="flex-direction:column; align-items:stretch; gap:6px;">' +
+          '<div style="display:flex; gap:8px; align-items:center;">' +
+            '<input type="checkbox" data-f="selected" data-idx="'+idx+'" '+(l.selected?'checked':'')+'>' +
+            '<input type="text" data-f="name" data-idx="'+idx+'" value="'+esc(l.name)+'" style="flex:1 1 auto;">' +
+            '<select data-f="category" data-idx="'+idx+'">' +
+              '<option value="hemikalija"'+(l.category==='hemikalija'?' selected':'')+'>Hemikalija</option>' +
+              '<option value="potrosni"'+(l.category==='potrosni'?' selected':'')+'>Potrošni</option>' +
+            '</select>' +
+          '</div>' +
+          '<div style="display:flex; gap:8px;">' +
+            '<input type="number" data-f="quantity" data-idx="'+idx+'" value="'+l.quantity+'" placeholder="količina" style="width:90px;">' +
+            '<input type="text" data-f="unit" data-idx="'+idx+'" value="'+esc(l.unit)+'" placeholder="jed." style="width:70px;">' +
+            '<input type="text" data-f="casNumber" data-idx="'+idx+'" value="'+esc(l.casNumber)+'" placeholder="CAS" style="flex:1 1 auto;">' +
+            '<input type="text" data-f="lotNumber" data-idx="'+idx+'" value="'+esc(l.lotNumber)+'" placeholder="lot" style="width:90px;">' +
+          '</div>' +
+        '</div>';
+      }).join('') + '<button class="btn btn-primary" id="saveInvoiceRowsBtn" style="width:100%; justify-content:center; margin-top:10px;">Sačuvaj označene stavke</button>';
+
+      wrap.addEventListener('input', onRowInput);
+      wrap.addEventListener('change', onRowInput);
+      $('saveInvoiceRowsBtn').addEventListener('click', async function(){
+        var btnEl = this;
+        var toSave = extractedLines.filter(function(l){ return l.selected && l.name && l.quantity>0 && l.unit; });
+        if(toSave.length===0){ toast('Označi bar jednu ispravnu stavku (naziv, količina i jedinica su obavezni).'); return; }
+        var room = $('f_invoiceRoom').value.trim();
+        if(!room){ toast('Unesi prostoriju u koju su ove stavke smeštene.'); return; }
+        btnEl.disabled = true;
+        var okCount = 0;
+        for(var i=0;i<toSave.length;i++){
+          var ok = await saveNewItem({
+            name:toSave[i].name, category:toSave[i].category, casNumber:toSave[i].casNumber,
+            unit:toSave[i].unit, quantity:toSave[i].quantity, minQuantity:0,
+            barcode:'', lotNumber:toSave[i].lotNumber, room:room, location:'', expiryDate:'',
+            notes:'Dodato sa slike računa'
+          });
+          if(ok) okCount++;
+        }
+        if(okCount>0) toast(okCount + ' od ' + toSave.length + ' stavki dodato.');
+        if(okCount===toSave.length) closeDrawer();
+        btnEl.disabled = false;
+      });
+    }
+
+    $('readBtn').addEventListener('click', async function(){
+      var fileInput = $('f_invoiceFile');
+      if(!fileInput.files || fileInput.files.length===0){ toast('Izaberi sliku računa.'); return; }
+      $('readBtn').disabled = true;
+      $('invoiceStatus').innerHTML = '<p class="helper-text">Claude čita račun…</p>';
+      $('invoiceRows').innerHTML = '';
+      try{
+        var prompt = 'Ovo je slika fakture ili otpremnice za laboratorijske hemikalije i/ili potrošni materijal. ' +
+          'Iščitaj SVAKU stavku i vrati isključivo jedan JSON niz objekata (bez ikakvog drugog teksta), gde svaki objekat ima polja: ' +
+          '"name" (naziv proizvoda kao što piše), "casNumber" (CAS broj ako je naveden, inače prazan string), ' +
+          '"quantity" (ukupna količina kao broj), "unit" (jedinica mere kao što piše, npr. mL, g, kom, kutija), ' +
+          '"lotNumber" (broj lota/šarže ako postoji, inače prazan string), ' +
+          '"category" ("hemikalija" ili "potrosni" — najbolja procena). Ako ne možeš da pročitaš nijednu stavku, vrati [].';
+        var rows = await sampleFn.json(prompt, {images: fileInput.files[0], modelTier:'default'});
+        if(!Array.isArray(rows)) rows = [];
+        extractedLines = rows.map(function(r){
+          return {
+            name: String(r.name||'').slice(0,200),
+            casNumber: String(r.casNumber||'').slice(0,60),
+            quantity: Number(r.quantity)||0,
+            unit: String(r.unit||'').slice(0,20),
+            lotNumber: String(r.lotNumber||'').slice(0,60),
+            category: (r.category==='potrosni') ? 'potrosni' : 'hemikalija',
+            selected: true
+          };
+        }).filter(function(r){ return r.name; });
+        if(extractedLines.length===0){
+          $('invoiceStatus').innerHTML = '<p class="helper-text">Nisam prepoznao nijednu stavku na slici. Pokušaj sa jasnijom slikom ili unesi ručno.</p>';
+        } else {
+          $('invoiceStatus').innerHTML = '<p class="helper-text">Pronađeno ' + extractedLines.length + ' stavki — proveri i izmeni po potrebi pre čuvanja.</p>';
+        }
+        renderInvoiceRows();
+      }catch(e){
+        var msg = invoiceErrorMessage(e);
+        $('invoiceStatus').innerHTML = msg ? '<p class="helper-text">' + esc(msg) + '</p>' : '';
+      } finally {
+        $('readBtn').disabled = false;
+      }
+    });
+  }
+  $('invoicePhotoBtn').addEventListener('click', openInvoiceDrawer);
+
+  // ---------------- Protocols (open to everyone) ----------------
+  function renderProtocols(){
+    var grid = $('protocolsGrid');
+    $('protocolCount').textContent = protocols.length + ' lista';
+    if(protocols.length===0){
+      grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><div class="big">🧫</div>Još nema sačuvanih lista.<br>Napravi listu potrebnih stavki za eksperiment i sistem će odmah reći šta nedostaje.</div>';
+      return;
+    }
+    var sorted = protocols.slice().sort(function(a,b){ return (a.name||'').localeCompare(b.name||'', 'sr'); });
+    grid.innerHTML = sorted.map(function(p){
+      var lines = (p.items||[]).map(function(line){
+        var current = mergedItem(line.itemId);
+        var available = current ? Number(current.quantity||0) : 0;
+        var ok = current && available >= Number(line.neededQuantity||0);
+        var dotColor = !current ? 'var(--danger)' : (ok ? 'var(--ok)' : 'var(--warn)');
+        var label = !current ? ' (stavka obrisana iz inventara)' : (' (dostupno ' + fmtQty(available) + ' ' + esc(line.unit||'') + ')');
+        return '<div class="protocol-line"><span class="dot" style="background:' + dotColor + '"></span>' +
+          '<span class="lname">' + esc(line.itemName) + '</span>' +
+          '<span class="lqty mono">potrebno ' + fmtQty(line.neededQuantity) + ' ' + esc(line.unit||'') + '</span></div>' +
+          (!ok ? '<div class="item-meta" style="margin-left:15px;">' + label + '</div>' : '');
+      }).join('');
+      var missing = (p.items||[]).filter(function(line){
+        var current = mergedItem(line.itemId);
+        return !current || Number(current.quantity||0) < Number(line.neededQuantity||0);
+      }).length;
+      var statusHtml = missing===0
+        ? '<span class="protocol-status badge-ok">Spremno</span>'
+        : '<span class="protocol-status badge-warn">Nedostaje ' + missing + ' od ' + (p.items||[]).length + '</span>';
+      var procedureHtml = p.procedure
+        ? '<details style="margin:8px 0; padding:8px; background:var(--surface-2); border-radius:6px; font-size:13px;"><summary style="cursor:pointer; font-weight:500;">📋 Procedura</summary><div style="margin-top:8px; white-space:pre-wrap; line-height:1.5;">' + esc(p.procedure) + '</div></details>'
+        : '';
+      return '<div class="protocol-card" data-id="' + p.id + '">' +
+        '<div><div class="protocol-title">' + esc(p.name) + '</div>' +
+        (p.description ? '<div class="protocol-desc">' + esc(p.description) + '</div>' : '') + '</div>' +
+        '<div class="protocol-lines">' + lines + '</div>' +
+        procedureHtml +
+        '<div class="protocol-footer">' +
+          '<div class="protocol-meta">' + esc(p.createdBy||'') + ' · ' + fmtDate((p.createdAt||'').slice(0,10)) + '</div>' +
+          statusHtml +
+        '</div>' +
+        '<div style="display:flex; gap:8px; margin-top:8px;">' +
+          '<button class="btn btn-primary" data-action="apply-protocol" style="flex:1; justify-content:center;">' + (missing===0 ? 'Primeni listu' : 'Primeni (nedostaje!) ') + '</button>' +
+          '<button class="btn btn-ghost" data-action="undo-protocol" style="justify-content:center;" title="Poništi poslednju primenu ove liste">↶ Poništi</button>' +
+          '<button class="btn btn-ghost btn-danger" data-action="delete-protocol" style="justify-content:center;">Obriši listu</button>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  $('protocolsGrid').addEventListener('click', function(e){
+    var applyBtn = e.target.closest('button[data-action="apply-protocol"]');
+    if(applyBtn){
+      var card = e.target.closest('.protocol-card');
+      var id = card.getAttribute('data-id');
+      if(!requireUser()) return;
+      var protocol = protocols.find(function(p){ return p.id===id; });
+      if(!protocol) return;
+      openApplyProtocolDrawer(protocol);
+      return;
+    }
+    var undoBtn = e.target.closest('button[data-action="undo-protocol"]');
+    if(undoBtn){
+      var card = e.target.closest('.protocol-card');
+      var id = card.getAttribute('data-id');
+      if(!requireUser()) return;
+      var protocol = protocols.find(function(p){ return p.id===id; });
+      if(!protocol) return;
+      openUndoProtocolDrawer(protocol);
+      return;
+    }
+    var deleteBtn = e.target.closest('button[data-action="delete-protocol"]');
+    if(!deleteBtn) return;
+    var card = e.target.closest('.protocol-card');
+    var id = card.getAttribute('data-id');
+    if(!requireUser()) return;
+    openDrawer('Obriši listu',
+      '<p>Obrisati ovu listu za eksperiment? Stavke u inventaru ostaju netaknute.</p>',
+      '<button class="btn btn-ghost" id="cancelBtn">Otkaži</button>' +
+      '<button class="btn btn-primary btn-danger" id="confirmDeleteBtn" style="border-color:var(--danger); background:var(--danger-soft);">Obriši</button>');
+    $('cancelBtn').addEventListener('click', closeDrawer);
+    $('confirmDeleteBtn').addEventListener('click', async function(){
+      try{ await db.doc('protocols/' + id).delete(); closeDrawer(); toast('Lista obrisana.'); }
+      catch(e){ handleWriteError(e); }
+    });
+  });
+
+  function openAddProtocolDrawer(){
+    if(!requireUser()) return;
+    var lines = [];
+    var items = mergedItemsArray().sort(function(a,b){ return (a.name||'').localeCompare(b.name||'','sr'); });
+    if(items.length===0){ toast('Prvo dodaj bar jednu stavku u inventar.'); return; }
+    var options = items.map(function(i){ return '<option value="' + i.id + '">' + esc(i.name) + ' (' + esc(i.unit||'') + ')</option>'; }).join('');
+    var body =
+      '<div class="field"><label>Naziv liste *</label><input id="f_pname" type="text" placeholder="npr. Priprema PBS pufera"></div>' +
+      '<div class="field"><label>Opis</label><input id="f_pdesc" type="text" placeholder="opciono"></div>' +
+      '<div class="field"><label>Procedura (detaljne instrukcije)</label><textarea id="f_pprocedure" placeholder="Napisi korak-po-korak instrukcije za sprovođenje ove analize (opciono)" style="height:100px; resize:vertical;"></textarea></div>' +
+      '<div class="field"><label>Dodaj stavku</label>' +
+        '<div class="add-line-row">' +
+          '<select id="f_lineItem">' + options + '</select>' +
+          '<div class="field qty"><input id="f_lineQty" type="number" step="any" min="0" placeholder="količina"></div>' +
+          '<button class="btn" id="addLineBtn">Dodaj</button>' +
+        '</div>' +
+      '</div>' +
+      '<div class="lines-list" id="linesList"></div>';
+    openDrawer('Nova lista za eksperiment', body,
+      '<button class="btn btn-ghost" id="cancelBtn">Otkaži</button>' +
+      '<button class="btn btn-primary" id="saveBtn">Sačuvaj listu</button>');
+
+    function renderLines(){
+      $('linesList').innerHTML = lines.map(function(l, idx){
+        return '<div class="line"><span class="n">' + esc(l.itemName) + '</span><span class="mono">' + fmtQty(l.neededQuantity) + ' ' + esc(l.unit) + '</span>' +
+          '<button class="icon-btn" data-idx="' + idx + '" style="width:22px;height:22px;">✕</button></div>';
+      }).join('') || '<div class="helper-text">Još nema dodatih stavki.</div>';
+    }
+    renderLines();
+
+    $('addLineBtn').addEventListener('click', function(){
+      var itemId = $('f_lineItem').value;
+      var qty = parseFloat($('f_lineQty').value);
+      var item = mergedItem(itemId);
+      if(!item){ toast('Izaberi stavku.'); return; }
+      if(isNaN(qty) || qty<=0){ toast('Unesi ispravnu količinu.'); return; }
+      lines.push({itemId:itemId, itemName:item.name, neededQuantity:qty, unit:item.unit||''});
+      $('f_lineQty').value = '';
+      renderLines();
+    });
+    $('linesList').addEventListener('click', function(e){
+      var btn = e.target.closest('button[data-idx]');
+      if(!btn) return;
+      lines.splice(parseInt(btn.getAttribute('data-idx'),10), 1);
+      renderLines();
+    });
+    $('cancelBtn').addEventListener('click', closeDrawer);
+    $('saveBtn').addEventListener('click', async function(){
+      var name = $('f_pname').value.trim();
+      if(!name){ toast('Unesi naziv liste.'); return; }
+      if(lines.length===0){ toast('Dodaj bar jednu stavku u listu.'); return; }
+      try{
+        var doc = { name: name, description: $('f_pdesc').value.trim(), createdBy: currentUser, createdAt: nowIso(), items: lines };
+        var proc = $('f_pprocedure').value.trim();
+        if(proc) doc.procedure = proc;
+        await db.collection('protocols').add(doc);
+        closeDrawer();
+        toast('Lista sačuvana.');
+      }catch(e){ handleWriteError(e); }
+    });
+  }
+  $('addProtocolBtn').addEventListener('click', openAddProtocolDrawer);
+
+  function openApplyProtocolDrawer(protocol){
+    if(!requireUser()) return;
+    var issues = [];
+    var rows = (protocol.items||[]).map(function(line){
+      var current = mergedItem(line.itemId);
+      var available = current ? Number(current.quantity||0) : 0;
+      var needed = Number(line.neededQuantity||0);
+      var ok = current && available >= needed;
+      if(!ok){
+        issues.push({
+          itemName: line.itemName,
+          available: available,
+          needed: needed,
+          unit: line.unit
+        });
+      }
+      var dotColor = !current ? 'var(--danger)' : (ok ? 'var(--ok)' : 'var(--warn)');
+      var statusLabel = !current ? ' (obrisano)' : (ok ? '' : ' (nedostaje!)');
+      return '<div class="line" style="padding:10px; background:var(--surface-2); border-radius:6px; margin-bottom:6px;">' +
+        '<div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">' +
+          '<span style="width:8px; height:8px; border-radius:999px; flex:0 0 auto; background:' + dotColor + '"></span>' +
+          '<span style="flex:1; font-weight:500;">' + esc(line.itemName) + '</span>' +
+        '</div>' +
+        '<div style="font-size:12px; color:var(--ink-muted);">' +
+          'Trebalo: <strong>' + fmtQty(needed) + ' ' + esc(line.unit||'') + '</strong>' +
+          ' · Dostupno: <strong>' + fmtQty(available) + ' ' + esc(line.unit||'') + '</strong>' +
+          statusLabel +
+        '</div>' +
+      '</div>';
+    }).join('');
+
+    var body = '<h3 style="margin:0 0 12px 0;">Primeni listu: ' + esc(protocol.name) + '</h3>' +
+      '<p style="margin:0 0 16px 0; color:var(--ink-muted);">Sledeće stavke će biti oduzete od zalihe:</p>' +
+      '<div id="applyList">' + rows + '</div>';
+
+    if(issues.length > 0){
+      body = '<h3 style="margin:0 0 12px 0;">Ne možeš primeniti ovu listu</h3>' +
+        '<p style="margin:0 0 12px 0; color:var(--danger);">Nema dovoljno sledećih stavki:</p>' +
+        '<div id="issuesList">' + issues.map(function(iss){
+          return '<div style="padding:10px; background:var(--danger-soft); border-radius:6px; margin-bottom:6px; border-left:3px solid var(--danger);">' +
+            '<strong>' + esc(iss.itemName) + '</strong><br>' +
+            '<small>Trebalo: ' + fmtQty(iss.needed) + ' ' + esc(iss.unit) + ' · Dostupno: ' + fmtQty(iss.available) + ' ' + esc(iss.unit) + '</small>' +
+          '</div>';
+        }).join('') + '</div>';
+    }
+
+    openDrawer((issues.length > 0 ? '⚠️ ' : '') + 'Primeni listu',
+      body,
+      (issues.length > 0
+        ? '<button class="btn btn-ghost" id="cancelBtn" style="margin-left:auto;">Zatvori</button>'
+        : '<button class="btn btn-ghost" id="cancelBtn">Otkaži</button>' +
+          '<button class="btn btn-primary" id="applyBtn">Primeni listu (redukuj količine)</button>'));
+
+    $('cancelBtn').addEventListener('click', closeDrawer);
+    if(issues.length === 0){
+      $('applyBtn').addEventListener('click', async function(){
+        $('applyBtn').disabled = true;
+        try{
+          var now = nowIso();
+          var batchId = 'batch-' + Date.now() + '-' + Math.random().toString(36).substr(2,4);
+
+          // Process each item in the protocol
+          for(var i=0; i<(protocol.items||[]).length; i++){
+            var line = protocol.items[i];
+            var itemId = line.itemId;
+            var qtyToDeduct = Number(line.neededQuantity||0);
+            var current = mergedItem(itemId);
+            if(!current) continue;
+
+            var newQty = Number(current.quantity||0) - qtyToDeduct;
+            var entry = {
+              ts: now,
+              type: 'consume',
+              delta: -qtyToDeduct,
+              resultQty: newQty,
+              by: currentUser,
+              note: 'Primenjena lista: ' + protocol.name + ' [' + batchId + ']'
+            };
+            var history = (current.history||[]).concat([entry]).slice(-30);
+
+            await db.doc('stock/' + itemId).update({
+              quantity: newQty,
+              updatedAt: now,
+              updatedBy: currentUser,
+              history: history
+            });
+          }
+
+          closeDrawer();
+          toast('✓ Lista primenjena! Količine su oduzete od zalihe. Batch ID: ' + batchId);
+        }catch(e){
+          $('applyBtn').disabled = false;
+          handleWriteError(e);
+        }
+      });
+    }
+  }
+
+  // ---------------- Export data ----------------
+  function exportToXlsx(){
+    var items = mergedItemsArray();
+    var data = items.map(function(item){
+      var currentStock = stockById.get(item.id) || {};
+      return {
+        'Naziv': item.name,
+        'CAS broj': item.casNumber || '',
+        'Jedinica': item.unit || '',
+        'Zaliha': currentStock.quantity || 0,
+        'Minimalna zaliha': item.minQuantity || 0,
+        'Prostorija': item.room || '',
+        'Lokacija': item.location || '',
+        'Rok trajanja': item.expiryDate || '',
+        'Barcode': item.barcode || '',
+        'Opis': item.description || '',
+        'Kreirana': item.createdAt ? item.createdAt.slice(0,10) : '',
+        'Kreirajući korisnik': item.createdBy || ''
+      };
+    });
+
+    var ws = XLSX.utils.json_to_sheet(data);
+    var wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Inventar');
+
+    // Set column widths
+    var wscols = [{wch:20}, {wch:15}, {wch:12}, {wch:10}, {wch:12}, {wch:12}, {wch:15}, {wch:12}, {wch:12}, {wch:20}, {wch:12}, {wch:15}];
+    ws['!cols'] = wscols;
+
+    var now = new Date();
+    var filename = 'LabMaster_inventar_' + now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0') + '.xlsx';
+    XLSX.writeFile(wb, filename);
+    toast('✓ Preuzet XLSX fajl: ' + filename);
+  }
+
+  function exportToMarkdown(){
+    var items = mergedItemsArray();
+    var md = '# LabMaster - Inventar\n\n';
+    md += '*Izvezeno: ' + new Date().toLocaleString('sr-RS') + '*\n\n';
+    md += '| Naziv | CAS | Jedinica | Zaliha | Min | Prostorija | Lokacija | Rok |\n';
+    md += '|-------|-----|----------|--------|-----|-----------|----------|-----|\n';
+
+    items.forEach(function(item){
+      var currentStock = stockById.get(item.id) || {};
+      var qty = currentStock.quantity || 0;
+      var min = item.minQuantity || 0;
+      var status = qty < min ? '⚠️' : '✓';
+      md += '| ' + (item.name||'').replace(/\|/g,'\\|') + ' | ' + (item.casNumber||'').replace(/\|/g,'\\|') + ' | ' + (item.unit||'').replace(/\|/g,'\\|') + ' | ' + qty + ' ' + status + ' | ' + min + ' | ' + (item.room||'').replace(/\|/g,'\\|') + ' | ' + (item.location||'').replace(/\|/g,'\\|') + ' | ' + (item.expiryDate||'').slice(0,10) + ' |\n';
+    });
+
+    md += '\n\n## Legenda\n- ✓ = Dostupna količina\n- ⚠️ = Ispod minimalne zalihe\n\n';
+    md += '## Liste za eksperiment\n\n';
+
+    protocols.forEach(function(p){
+      var missing = (p.items||[]).filter(function(line){
+        var current = mergedItem(line.itemId);
+        return !current || Number(current.quantity||0) < Number(line.neededQuantity||0);
+      }).length;
+      var status = missing === 0 ? '✓ Spremno' : '⚠️ Nedostaje ' + missing + ' stavki';
+      md += '### ' + p.name + ' - ' + status + '\n\n';
+      if(p.description) md += '*' + p.description + '*\n\n';
+      md += '| Stavka | Potrebna količina | Dostupna |\n|--------|------------------|----------|\n';
+      (p.items||[]).forEach(function(line){
+        var current = mergedItem(line.itemId);
+        var available = current ? Number(current.quantity||0) : 0;
+        md += '| ' + (line.itemName||'').replace(/\|/g,'\\|') + ' | ' + line.neededQuantity + ' ' + (line.unit||'') + ' | ' + available + ' ' + (line.unit||'') + ' |\n';
+      });
+      md += '\n';
+    });
+
+    var now = new Date();
+    var filename = 'LabMaster_inventar_' + now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0') + '.md';
+    var blob = new Blob([md], {type:'text/markdown'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    toast('✓ Preuzet Markdown fajl: ' + filename);
+  }
+
+  function openUndoProtocolDrawer(protocol){
+    if(!requireUser()) return;
+    // Find recent consume entries related to this protocol
+    var recentApplications = [];
+    mergedItemsArray().forEach(function(item){
+      (item.history||[]).forEach(function(h, idx){
+        if(h.type==='consume' && h.note && h.note.indexOf('Primenjena lista: ' + protocol.name) === 0){
+          var batchMatch = h.note.match(/\[batch-(\d+-[a-z0-9]+)\]/);
+          var batchId = batchMatch ? batchMatch[1] : null;
+          if(batchId && !recentApplications.find(function(a){ return a.batchId===batchId; })){
+            recentApplications.push({
+              batchId: batchId,
+              appliedAt: h.ts,
+              appliedBy: h.by,
+              items: [] // Will fill below
+            });
+          }
+        }
+      });
+    });
+
+    // Collect all items affected by each batch
+    recentApplications.forEach(function(app){
+      mergedItemsArray().forEach(function(item){
+        (item.history||[]).forEach(function(h){
+          if(h.type==='consume' && h.note && h.note.indexOf('[batch-' + app.batchId + ']') > 0){
+            app.items.push({
+              itemId: item.id,
+              itemName: item.name,
+              unit: item.unit,
+              delta: h.delta,
+              resultQty: h.resultQty
+            });
+          }
+        });
+      });
+    });
+
+    if(recentApplications.length === 0){
+      openDrawer('Nema šta da se poništi',
+        '<p>Nema primena ove liste za poništavanje. Lista se primenjuje klikom na dugme „Primeni listu".</p>',
+        '<button class="btn btn-ghost" id="cancelBtn">Zatvori</button>');
+      $('cancelBtn').addEventListener('click', closeDrawer);
+      return;
+    }
+
+    // Sort by date descending (most recent first)
+    recentApplications.sort(function(a,b){ return (b.appliedAt||'').localeCompare(a.appliedAt||''); });
+
+    var body = '<h3 style="margin:0 0 12px 0;">Poništi primenu liste</h3>' +
+      '<p style="margin:0 0 16px 0; color:var(--ink-muted);">Izaberi primenu koju želiš da poništiš:</p>' +
+      '<div id="applicationsList">' + recentApplications.slice(0, 5).map(function(app, idx){
+        return '<div class="line" style="padding:12px; background:var(--surface-2); border-radius:6px; margin-bottom:8px; cursor:pointer;" data-batch="' + app.batchId + '" data-idx="' + idx + '">' +
+          '<div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">' +
+            '<div><strong style="font-size:13px;">Primena od ' + fmtDate((app.appliedAt||'').slice(0,10)) + '</strong></div>' +
+            '<small style="color:var(--ink-muted);">' + app.appliedBy + '</small>' +
+          '</div>' +
+          '<small style="display:block; color:var(--ink-muted); margin-bottom:6px;">' + app.items.length + ' stavki</small>' +
+          '<button class="btn btn-small btn-danger" style="width:100%; font-size:12px;">Poništi ovu primenu</button>' +
+        '</div>';
+      }).join('') + '</div>';
+
+    openDrawer('Poništi primenu liste',
+      body,
+      '<button class="btn btn-ghost" id="cancelBtn">Zatvori</button>');
+
+    $('cancelBtn').addEventListener('click', closeDrawer);
+    $('applicationsList').addEventListener('click', async function(e){
+      var btn = e.target.closest('button');
+      if(!btn) return;
+      var line = btn.closest('.line');
+      var batchId = line.getAttribute('data-batch');
+      var app = recentApplications.find(function(a){ return a.batchId===batchId; });
+      if(!app) return;
+
+      btn.disabled = true;
+      try{
+        var now = nowIso();
+        // Revert each item by finding the original consume entry and removing it, restoring quantity
+        for(var i=0; i<(app.items||[]).length; i++){
+          var item = app.items[i];
+          var current = mergedItem(item.itemId);
+          if(!current) continue;
+
+          // Remove the consume entry with this batch ID from history
+          var newHistory = (current.history||[]).filter(function(h){
+            return !(h.type==='consume' && h.note && h.note.indexOf('[batch-' + batchId + ']') > 0);
+          });
+
+          // Recalculate quantity by summing history
+          var newQty = (item.resultQty||0) - (item.delta||0); // Reverse the delta
+
+          await db.doc('stock/' + item.itemId).update({
+            quantity: newQty,
+            updatedAt: now,
+            updatedBy: currentUser,
+            history: newHistory
+          });
+        }
+
+        closeDrawer();
+        toast('✓ Primena poništena! Količine su vraćene na zalihe.');
+      }catch(e){
+        btn.disabled = false;
+        handleWriteError(e);
+      }
+    });
+  }
+
+  // ---------------- Activity ----------------
+  var typeLabel = { create:'Kreirana stavka', add:'Dopuna zalihe', consume:'Trošenje', adjust:'Korekcija količine', edit:'Izmena podataka' };
+  var typeIcon = { create:'✚', add:'⬆', consume:'⬇', adjust:'⚖', edit:'✎' };
+
+  // Gather notifications about controlled substances for admin dashboard
+  function getControlledSubstanceNotifications(){
+    var notifications = [];
+    mergedItemsArray().forEach(function(item){
+      if(!item.isControlled) return;
+      (item.history||[]).forEach(function(h){
+        notifications.push({
+          itemName: item.name,
+          ts: h.ts,
+          by: h.by,
+          type: h.type,
+          delta: h.delta,
+          action: (typeLabel[h.type]||h.type) + ': ' + fmtQty(Math.abs(h.delta||0)) + ' ' + (item.unit||''),
+          note: h.note
+        });
+      });
+    });
+    notifications.sort(function(a,b){ return (b.ts||'').localeCompare(a.ts||''); });
+    return notifications;
+  }
+
+  function renderActivity(){
+    var all = [];
+    mergedItemsArray().forEach(function(item){
+      (item.history||[]).forEach(function(h){ all.push(Object.assign({}, h, {itemName:item.name, unit:item.unit})); });
+    });
+    all.sort(function(a,b){ return (b.ts||'').localeCompare(a.ts||''); });
+    all = all.slice(0, 60);
+    var list = $('activityList');
+    if(all.length===0){ list.innerHTML = '<div class="empty-state">Još nema aktivnosti.</div>'; return; }
+    list.innerHTML = all.map(function(h){
+      var deltaTxt = '';
+      if(h.delta){ deltaTxt = ' (' + (h.delta>0?'+':'') + fmtQty(h.delta) + ' ' + esc(h.unit||'') + ')'; }
+      return '<div class="activity-item">' +
+        '<div class="activity-icon">' + (typeIcon[h.type]||'•') + '</div>' +
+        '<div class="activity-text">' +
+          '<div class="activity-title">' + (typeLabel[h.type]||h.type) + ': <b>' + esc(h.itemName) + '</b>' + deltaTxt + '</div>' +
+          '<div class="activity-sub">' + esc(h.by||'') + ' · ' + fmtDateTime(h.ts) + (h.note ? ' · ' + esc(h.note) : '') + '</div>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  // ---------------- Render all ----------------
+  function renderAll(){
+    renderAlertStrip();
+    renderTable();
+    renderProtocols();
+    renderTabCounts();
+    if(activeTab==='aktivnost') renderActivity();
+  }
+
+  applySessionToUI();
+  renderTable();
+  initDb();
+  initSample();
+})();
+</script>
